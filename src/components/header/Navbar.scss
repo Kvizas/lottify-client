@@ -1,6 +1,127 @@
-.navbar {
-    width: 100%;
+@import "../../fonts";
+
+$primaryColor: #E05955;
+
+.navbar-background {
+    width: 100vw;
     background: #000000 0% 0% no-repeat padding-box;
     opacity: 1;
-    padding: 1.5% 8%;
+    padding: 2% 0;
+    position: fixed;
+    top: 0;
+}
+
+.navbar-height{
+    margin-top: 3% * 2;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 8%;
+}
+
+.nav-burger {
+    cursor: pointer;
+    padding: 1%;
+}
+
+.nav-outside-burger {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    padding: 1%;
+}
+
+@media(max-width: 1000px) {
+    .nav-burger-stack {
+        width: 30px;
+        height: 2px;
+        background-color: $primaryColor;
+        margin: 5px 0;
+        border-radius: 2px;
+    }
+    .nav-outside-burger {
+        display: none;
+    }
+
+    .navbar-background {
+        padding: 3% 0;
+    }
+}
+
+.navigation {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.nav-item {
+    font: normal normal 700 1rem 'Montserrat';
+    margin: 0 1.5%;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    transition: 100ms;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    cursor: pointer;
+    color: $primaryColor;
+    transition: 100ms;
+}
+
+.nav-item-active {
+    color: $primaryColor;
+}
+
+.nav-modal-container {
+    height: 100vh;
+    width: 60%;
+    max-width: 300px;
+    background-color: #000;
+    position: fixed;
+    right: -250px;
+    transition: right 300ms;
+}
+.nav-modal-menu {
+    margin: 30% 0;
+}
+
+.nav-modal-background {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    transition: 300ms;
+    background: rgba(0, 0, 0, 0.8);
+    visibility: none;
+    opacity: 0;
+}
+
+.nav-item-inmodal {
+    margin: 8% 15%;
+}
+
+.nav-modal-footer {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    bottom: 0;
+    padding: 20% 10%;
+}
+
+.nav-media-icon {
+    width: 65%;
+}
+
+@media(min-width: 1000px) {
+    .nav-modal-container {
+        display: none;
+    }
+
+    .nav-modal-background {
+        display: none;
+    }
 }

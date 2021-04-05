@@ -3,7 +3,7 @@ import "./WordMark.scss";
 
 export default function WordMark() {
     return (
-        <div>
+        <div id="wordmark">
             Lottify
         </div>
     )
