@@ -1,0 +1,88 @@
+.slider-main {
+    height: 90vh;
+    width: 100%;
+    background-color: rgba(0,0,0, 0.8);
+    background-image: url("bmw.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-container {
+    height: 50%;
+    width: 35%;
+    position: absolute;
+    bottom: 0;
+    background: rgb(0,0,0);
+    padding: 3%;
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#ffffff",GradientType=1);
+    margin: 0 5%;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    box-sizing: border-box;
+}
+
+.slider-h {
+    font-size: 4rem;
+    letter-spacing: 3px;
+}
+
+.slider-p {
+    font-size: 1rem;
+    word-spacing: 2px;
+    line-height: 150%;
+}
+
+.slider-all-dots {
+    margin: 2% 3%;
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    right: 0;
+}
+.slider-dot {
+    transition: 100ms;
+    height: 14px;
+    width: 14px;
+    background-color: #ffffffaa;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.slider-dot-active {
+    background-color: #ffffffff;
+}
+
+@media(max-width: 1420px) {
+    .slider-main {
+        height: 100vh;
+    }
+}
+
+@media(max-width: 1300px) {
+    .slider-container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+    .slider-main {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 600px) {
+    .slider-h {
+        font-size: 2.5rem;
+    }
+    .slider-p {
+        font-size: 0.8rem;
+    }
+}

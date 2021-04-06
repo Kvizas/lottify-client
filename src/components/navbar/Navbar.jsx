@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useLocation, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import WordMark from "../wordmark/WordMark";
 
 import "./Navbar.scss";
