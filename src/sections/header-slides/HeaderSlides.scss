@@ -2,7 +2,7 @@
     height: 90vh;
     width: 100%;
     background-color: rgba(0,0,0, 0.8);
-    background-image: url("bmw.png");
+    background-image: url("bmw.webp");
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
@@ -67,6 +67,10 @@
 }
 
 @media(max-width: 1300px) {
+    .slider-all-dots {
+        display: none;
+    }
+    
     .slider-container {
         width: 100%;
         height: 100%;

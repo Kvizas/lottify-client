@@ -1,0 +1,75 @@
+.about-us-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10% 22.5%;
+}
+
+.about-us-image-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.about-us-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 320px;
+    width: 320px;
+}
+
+.about-us-text {
+    text-align: center;
+    margin: 5% 15%;
+}
+
+.about-us-text h1 {
+    font-size: 4rem;
+}
+
+.about-us-stat {
+    width: calc(100% / 3);
+}
+
+.about-us-stat h2 {
+    color: #E05955;
+    font: normal normal bold 2.5rem 'Montserrat';
+    margin: 25% 0 5% 0;
+}
+
+.about-us-stat h3 {
+    font: normal normal bold 1rem 'Montserrat';
+    margin: 0;
+}
+
+@media(max-width: 1750px) {
+    .about-us-image-disappear {
+        display: none;
+    }
+
+    .about-us-image {
+        width: 40%;
+        height: 0;
+        padding-top: 40%;
+    }
+}
+
+@media(max-width: 1100px) {
+
+    .about-us-text h1 {
+        font-size: 2rem;
+    }
+
+    .about-us-stat h2 {
+        margin: 10% 0 1% 0;
+    }
+    
+    .about-us-stat {
+        width: 100%;
+    }
+    
+    .about-us-main {
+        padding: 10% 0;
+    }
+}
