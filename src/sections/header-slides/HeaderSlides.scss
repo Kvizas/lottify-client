@@ -2,24 +2,26 @@
     height: 90vh;
     width: 100%;
     background-color: rgba(0,0,0, 0.8);
-    background-image: url("bmw.webp");
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
     overflow: hidden;
+    transition: 500ms;
 }
 
 .slider-container {
-    height: 50%;
+    overflow-y: hidden;
+    height: 100%;
     width: 35%;
     position: absolute;
     bottom: 0;
     background: rgb(0,0,0);
     padding: 3%;
     background: rgb(0,0,0);
-    background: -moz-linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0) 100%);
-    background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0) 100%);
-    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0) 100%);
+    background: -moz-linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0) 50%);
+    background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0) 50%);
+    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0) 50%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#ffffff",GradientType=1);
     margin: 0 5%;
 
@@ -30,6 +32,7 @@
 }
 
 .slider-h {
+    width: 100%;
     font-size: 4rem;
     letter-spacing: 3px;
 }
@@ -54,6 +57,7 @@
     background-color: #ffffffaa;
     border-radius: 50%;
     margin: 0 5px;
+    cursor: pointer;
 }
 
 .slider-dot-active {

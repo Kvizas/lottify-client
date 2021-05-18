@@ -1,11 +1,5 @@
-.about-us-main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10% 22.5%;
-}
-
 .about-us-image-row {
+    margin-top: 5%;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -22,10 +16,6 @@
 .about-us-text {
     text-align: center;
     margin: 5% 15%;
-}
-
-.about-us-text h1 {
-    font-size: 4rem;
 }
 
 .about-us-stat {
@@ -67,9 +57,5 @@
     
     .about-us-stat {
         width: 100%;
-    }
-    
-    .about-us-main {
-        padding: 10% 0;
     }
 }

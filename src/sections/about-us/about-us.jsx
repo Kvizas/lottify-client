@@ -8,13 +8,13 @@ import Img3 from "./aus-3.webp";
 
 export default function AboutUs() {
     return (
-        <div className="about-us-main">
+        <div className="section" id="aboutus">
             <div className="about-us-image-row">
                 <div className="about-us-image" style={{ backgroundImage: `url(${Img1})` }}></div>
                 <div className="about-us-image" style={{ backgroundImage: `url(${Img2})` }}></div>
                 <div className="about-us-image about-us-image-disappear" style={{ backgroundImage: `url(${Img3})` }}></div>
             </div>
-            <div className="about-us-text">
+            <div className="section-text-box">
                 <h1>What is Lottify?</h1>
                 <p>
                     Lottify knows what you want, we run amazing prize competitions that will change your life.

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import { NavHashLink } from 'react-router-hash-link';
 import WordMark from "../wordmark/WordMark";
 
 import "./Navbar.scss";
@@ -11,10 +12,13 @@ import { ReactComponent as Messenger } from "../../assets/socialmedia/messenger.
 
 export default function Navbar() {
 
+    // eslint-disable-next-line
     const [burgerActive, setBurgerActive] = useState(false);
 
     const modalBackground = useRef(null);
     const modal = useRef(null);
+
+    const location = useLocation();
 
     function clickOnBurger(e, exit = false) {
         setBurgerActive(prev => {
@@ -50,8 +54,8 @@ export default function Navbar() {
                         </div>
                         Log in/Sign up
                     </NavLink>
-                    <NavLink to="/about" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">About us</NavLink>
-                    <NavLink to="/how-it-works" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">How it works</NavLink>
+                    <NavHashLink to="/#aboutus" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">About us</NavHashLink>
+                    <NavHashLink to="/#how-it-works" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">How it works</NavHashLink>
                     <NavLink to="/competitions" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">Competitions</NavLink>
                     <NavLink to="/faq" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">FAQ</NavLink>
                     <NavLink to="/contact-us" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">Contact us</NavLink>
@@ -75,8 +79,8 @@ export default function Navbar() {
                     </div>
                     <div className="nav-outside-burger">
                         <div className="navigation">
-                            <NavLink to="/about" className="nav-item" activeClassName="nav-item-active">About us</NavLink>
-                            <NavLink to="/how-it-works" className="nav-item" activeClassName="nav-item-active">How it works</NavLink>
+                            <NavHashLink to="/#aboutus" className="nav-item" activeClassName="nav-item-active">About us</NavHashLink>
+                            <NavHashLink to="/#how-it-works" className="nav-item" activeClassName="nav-item-active">How it works</NavHashLink>
                             <NavLink to="/competitions" className="nav-item" activeClassName="nav-item-active">Competitions</NavLink>
                             <NavLink to="/faq" className="nav-item" activeClassName="nav-item-active">FAQ</NavLink>
                             <NavLink to="/contact-us" className="nav-item" activeClassName="nav-item-active">Contact us</NavLink>

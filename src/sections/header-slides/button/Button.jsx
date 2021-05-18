@@ -4,7 +4,7 @@ import "./Button.scss";
 
 export default function Button(props) {
     return (
-        <div className={`slider-button ${props.className}`}>
+        <div className={`slider-button`}>
             {props.children}
         </div>
     )

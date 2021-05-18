@@ -1,0 +1,41 @@
+.comp-grid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.see-more {
+    color: black;
+    font: normal normal bold 22px/27px Montserrat;
+    margin: 5% 0;
+}
+
+.pagination {
+    margin: 5%;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+  }
+  
+  .pagination a {
+    padding: 10px;
+    border-radius: 12px;
+    font: normal normal bold .8rem Montserrat;
+    color: #2b2b2b;
+  }
+  
+  .pagination__link {
+      margin: 0 24px;
+  }
+  
+  .pagination__link--active a {
+    color: #fff;
+    background: #E05955;
+  }
+  
+  .pagination__link--disabled a {
+    color: #8b8b8b;
+  }
+  

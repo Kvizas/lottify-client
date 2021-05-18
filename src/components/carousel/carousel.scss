@@ -1,0 +1,49 @@
+.carousel-base {
+    width: 100%;
+}
+
+.carousel-images {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.carousel-transition {
+    transition: transform 1000ms, opacity 300ms;
+}
+
+.carousel-prev-img {
+    transform: translateX(-103%);
+    width: 100%;
+}
+.carousel-far-prev-img {
+    transform: translateX(2 * -103%);
+    width: 100%;
+    opacity: 0;
+}
+
+.carousel-curr-img {
+    width: 100%;
+    height: 40vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-next-img {
+    transform: translateX(103%);
+    width: 100%;
+}
+.carousel-far-next-img {
+    transform: translateX(2 * 103%);
+    width: 100%;
+    opacity: 0;
+}
+
+.carousel-sides {
+    height: 40vh;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

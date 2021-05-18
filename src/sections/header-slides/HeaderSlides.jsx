@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useQuery } from 'react-query';
 
 import "./HeaderSlides.scss";
 
+import { API_URL } from "../../settings";
 import { getData } from "../../requests/get-data";
 
 import Button from "./button/Button";
-
-let slides = [];
 
 class Slide {
 
@@ -14,40 +14,52 @@ class Slide {
         this.h = header;
         this.p = paragraph;
         this.img = img;
-        slides.push(this);
     }
 }
 
 export default function HeaderSlides() {
 
-    let currentSlide = new Slide("Competition for BMW x6!",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt dicta animi itaque commodi ab. Maiores, eum esse saepe iusto, minima vitae quidem aspernatur nemo et, exercitationem adipisci voluptatibus impedit voluptas.",
-        "bmw.webp");
+    const [slides, setSlides] = useState([]);
+
+    const { isLoading, data } = useQuery('slidesData', () =>
+        getData(API_URL + `/frontpage-slides`).then(json => {
+            setSlides([]);
+            json.forEach(slide => {
+                let s = new Slide(slide.Title, slide.Description, API_URL + slide.Slide.url);
+                setSlides(prev => [...prev, s]);
+            });
+            return json;
+        })
+    );
+
+    const [activeSlide, setActiveSlide] = useState(0);
 
     const nextSlide = function () {
-
+        setActiveSlide(prev => (prev + 1) % slides.length);
     }
 
-    setInterval(nextSlide, 7000);
+    useEffect(() => {
+        const interval = setInterval(nextSlide, 9000);
+        return () => clearInterval(interval);
+    }, [slides])
+
+    if (slides.length < 1) return "";
 
     return (
-        <div className="slider-main" style={{ backgroundImage: currentSlide.img }}>
+        <div className="slider-main" style={{ backgroundImage: `url(${slides[activeSlide].img})` }}>
             <div className="slider-container">
-                <h1 className="white slider-h">{currentSlide.h}</h1>
+                <h1 className="white slider-h">{slides[activeSlide].h}</h1>
                 <p className="white slider-p">
-                    {currentSlide.p}
+                    {slides[activeSlide].p}
                 </p>
-                <div className="d-flex justify-space-between w-100">
-                    <Button className="slider-left-button">Enter now</Button>
-                    <Button className="slider-right-button">Learn more</Button>
+                <div className="d-flex justify-center w-100">
+                    <Button>Enter now</Button>
                 </div>
             </div>
             <div className="slider-all-dots">
-                <div className="slider-dot slider-dot-active"></div>
-                <div className="slider-dot"></div>
-                <div className="slider-dot"></div>
-                <div className="slider-dot"></div>
-                <div className="slider-dot"></div>
+                {slides.map((_, i) =>
+                    <div className={`slider-dot ${activeSlide === i ? "slider-dot-active" : ""}`} onClick={() => setActiveSlide(i)}></div>
+                )}
             </div>
         </div>
     )

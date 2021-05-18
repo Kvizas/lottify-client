@@ -1,5 +1,5 @@
 .slider-button {
-    width: 100%;
+    width: 50%;
     background-color: #E05955;
     border: 3px solid #E05955;
     border-radius: 16px;
@@ -19,13 +19,6 @@
     border: 3px solid #E05955;
     border-radius: 16px;
     cursor: pointer;
-}
-
-.slider-left-button {
-    margin-right: 2%;
-}
-.slider-right-button {
-    margin-left: 2%;
 }
 
 @media (max-width: 600px) {
