@@ -1,6 +1,12 @@
 @import "./fonts/fonts";
 
-h1, h2, h3, h4 {
+$red-color: #DF5854;
+
+.red { 
+    color: $red-color;
+}
+
+h1, h2, h3, h4, h5, h6, li {
     font-family: 'Helvetica Neue';
 }
 
@@ -10,18 +16,38 @@ h1, h2, h3, h4 {
 
 h1 {
     font-size: 4rem;
+    margin: 12px 0;
+}
+h2 {
+    font-size: 2.5rem;
+    margin: 12px 0;
+}
+h3 {
+    font-size: 1.8rem;
+    margin: 12px 0;
+}
+h4 {
+    font-size: 1.2rem;
+    margin: 12px 0;
+}
+
+.no-margin {
+    margin: 0;
 }
 
 @media(max-width: 1100px) {
     h1 {
         font-size: 2rem;
     }
+
+    .mobile-text-center {
+        text-align: center;
+    }
 }
 
-p {
+html {
     font-family: 'Montserrat';
     font-weight: 300;
-    line-height: 1.4rem;
 }
 
 .white {
@@ -41,7 +67,15 @@ p {
 }
 
 .justify-space-between {
-    justify-content: space-between;
+    justify-content: space-between!important;
+}
+
+.justify-left {
+    justify-content: left!important;
+}
+
+.justify-end {
+    justify-content: flex-end!important;
 }
 
 .white {
@@ -63,6 +97,17 @@ p {
 .align-center {
     align-items: center;
 }
+.align-end {
+    align-content: flex-end;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
 
 .w-50 {
     width: 50%;
@@ -80,12 +125,36 @@ p {
     width: calc(100% / 3);
 }
 
+.w-2-3rd {
+    width: calc(2*(100% / 3));
+}
+
 .w-100 {
     width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.relative {
+    position: relative;
 }
 
 .flex-content-center {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.marked-content {
+    width: 100%;
+}
+
+.marked-content img {
+    max-width: 100%;
+}
+
+.hidden {
+    display: none;
 }

@@ -4,7 +4,8 @@ export const getData = async (url = '') => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-    }
+    },
+    credentials: 'include'
   });
   return response.json();
 };

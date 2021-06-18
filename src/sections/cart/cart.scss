@@ -1,0 +1,105 @@
+.cart-card {
+    margin-top: 48px;
+    width: 100%;
+    background: #FCFCFC 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    font-family: 'Montserrat';
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.4rem;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.cart-card th {
+    padding: 0 12px;
+}
+.cart-card-header {
+    background: #000000 0% 0% no-repeat padding-box;
+    border-radius: 16px;
+    top: -9px;
+    position: relative;
+    color: #fff;
+    font: normal normal bold .7rem Montserrat;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px;
+}
+
+.cart-col-product {
+    width: 40%;
+}
+
+.cart-col-quantity {
+    width: 20%;
+}
+
+.cart-col-price {
+    width: 15%;
+}
+
+.cart-col-answer {
+    width: 20%;
+}
+
+.cart-col-remove {
+    width: 5%;
+}
+
+.cart-col-discount {
+    width: 50%;
+}
+
+.cart-col-all, .cart-col-subtotal {
+    width: 25%;
+}
+
+.cart-code-margin {
+    margin: 8px 0;
+}
+
+.cart-row-border {
+    border-spacing: 2px;
+}
+
+.cart-checkout {
+    margin-top: 36px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.cart-mobile {
+    display: none;
+    width: 100%;
+}
+
+.cart-m-discount {
+    display: none;
+    margin-top: 36px;
+}
+
+@media(max-width: 1100px) {
+
+    .cart-m-hide {
+        display: none;
+    }
+
+    .cart-m-discount {
+        display: block;
+    }
+
+    .cart-heading {
+        margin-top: 36px;
+        text-align: center;
+        font-size: 1.8rem;
+    }
+
+    .cart-desktop {
+        display: none;
+    }
+
+    .cart-mobile {
+        display: block;
+    }
+}

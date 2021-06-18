@@ -43,22 +43,35 @@ $primaryColor: #E05955;
 }
 
 .nav-icon {
-    margin: 0 14px;
+    margin: 0 7px;
+    cursor: pointer;
+}
+
+.nav-hello {
+    width: max-content;
+    margin-right: 6px;
 }
 
 .nav-item {
     font: normal normal 700 1rem 'Montserrat';
     margin: 0 1.5%;
     text-transform: uppercase;
-    color: rgb(255, 255, 255);
+    color: #fff;
     transition: 100ms;
     text-decoration: none;
+    text-align: center;
+    user-select: none;
 }
 
 .nav-item:hover {
     cursor: pointer;
     color: $primaryColor;
     transition: 100ms;
+}
+
+.nav-item-no-hover:hover {
+    cursor: auto;
+    color: #fff;
 }
 
 .nav-item-active {
@@ -125,6 +138,7 @@ $primaryColor: #E05955;
 
     .nav-item {
         font-size: 0.8rem;
+        text-align: left;
     }
 
     .nav-icon {

@@ -1,0 +1,88 @@
+@import '../../index';
+
+.auth-modal {
+    height: 55vh;
+    width: 40vw;
+    background-color: #fff;
+}
+
+.auth-top {
+    height: 30%;
+    width: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-top h1 {
+    font: normal normal bold 1.2rem Montserrat;
+    color: #fff;
+    text-transform: uppercase;
+    width: 100%;
+    margin: 0;
+}
+
+.auth-top p {
+    font-size: 1rem;
+    font-family: 'Helvetica Neue';
+    color: #DF5854;
+    margin: 0;
+    text-align: end;
+}
+
+.auth-content {
+    height: 70%;
+    padding: 0 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.auth-forgot-pass {
+    cursor: pointer;
+    font: normal normal normal .7rem Montserrat;
+    text-decoration: none;
+    color: #000;
+}
+
+.login-register {
+    font: normal normal normal .7rem Montserrat;
+    text-align: center;
+}
+
+.login-register span {
+    color: $red-color;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.auth-error {
+    color: $red-color;
+    margin: 0 0 12px 0;
+    font-size: 0.7rem;
+}
+
+@media(max-width: 1100px) {
+    .auth-modal {
+        height: fit-content;
+        width: 100vw;
+    }
+
+    .auth-top h1 {
+        font-size: 1rem;
+    }
+
+    .auth-top p {
+        font-size: .8rem;
+    }
+
+    .auth-top {
+        padding: 12% 0;
+    }
+
+    .auth-content {
+        padding: 5%;
+    }
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import WordMark from '../wordmark/WordMark';
 
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 
 import { ReactComponent as Facebook } from "../../assets/socialmedia/facebook.svg";

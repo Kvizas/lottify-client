@@ -14,11 +14,11 @@ export default function RecentWinners() {
         <div className="rw-main section">
             <h1>Recent winners</h1>
             <Carousel>
-                <img src={Image1}></img>
-                <img src={Image2}></img>
-                <img src={Image3}></img>
-                <img src={Image4}></img>
-                <img src={Image5}></img>
+                <img src={Image1} alt=""></img>
+                <img src={Image2} alt=""></img>
+                <img src={Image3} alt=""></img>
+                <img src={Image4} alt=""></img>
+                <img src={Image5} alt=""></img>
             </Carousel>
         </div>
     )

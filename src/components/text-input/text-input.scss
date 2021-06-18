@@ -1,0 +1,36 @@
+.text-input {
+    width: 100%;
+    background-color: #F4F4F4;
+    height: 42px;
+    display: flex;
+    justify-content: stretch;
+    margin: 16px 0;
+}
+
+.text-input input {
+    font: normal normal normal 0.8rem Montserrat;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    flex: 1;
+}
+
+.text-input input::placeholder {
+    color: #000;
+}
+
+.text-input-icon {
+    width: 42px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-input input:focus {
+    outline: none;
+}
+
+.text-input-no-icon {
+    padding: 0 5%;
+}

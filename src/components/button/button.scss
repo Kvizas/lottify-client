@@ -1,0 +1,35 @@
+.button {
+    width: fit-content;
+    height: fit-content;
+    max-width: 100%;
+    padding: 6px 0;
+    min-width: 192px;
+    text-align: center;
+    background-color: #E05955;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: 100ms;
+    user-select: none;
+}
+
+.btn-short {
+    min-width: 128px;
+}
+
+.btn-text {
+    font: normal normal bold 0.8rem Montserrat;
+    margin: 0 16px;
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+.btn-disabled {
+    background-color: #d88381;
+}
+.btn-disabled:active {
+    transform: none;
+}

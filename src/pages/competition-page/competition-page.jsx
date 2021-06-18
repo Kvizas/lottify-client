@@ -1,11 +1,13 @@
 import React from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query';
+import Competition from "../../sections/competition/competition";
 
-import "./competitions.scss";
+export default function CompetitionPage(props) {
+    const competitionId = props.location.pathname.replace('/competition/', '');
 
-export default function CompetitionPage() {
     return (
-        <div>
-
-        </div>
+        <QueryClientProvider client={new QueryClient()}>
+            <Competition id={competitionId}></Competition>
+        </QueryClientProvider>
     )
 }

@@ -1,0 +1,120 @@
+.comp-header, .comp-subheader {
+    width: 100%;
+    margin: 0.7% 0;
+}
+
+.comp-subheader {
+    font-size: 1.3rem;
+}
+
+.comp-question-p {
+    width: 100%;
+    margin: 0 0 5% 0;
+}
+
+.comp-purchase-p {
+    margin-top: 4%;
+}
+
+.comp-total {
+    margin: 3%;
+    font: normal normal bold 1.3rem Montserrat;
+}
+
+.comp-card {
+    width: 100%;
+    margin: 5% 0;
+    background: #FCFCFC 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+.comp-img {
+    height: 40vh;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+}
+
+.comp-card-content {
+    padding: 4%;
+}
+
+.comp-m-gallery {
+    display: none;
+}
+
+@media(max-width: 1100px) {
+    .comp-header {
+        margin-top: 30px;
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .comp-subheader {
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .comp-card {
+        box-shadow: none;
+        background-color: transparent;
+        margin: 40px 10px 0px 10px;
+    }
+
+    .comp-overlow-hidden {
+        overflow: hidden;
+    }
+
+    .comp-img {
+        height: 20vh;
+    }
+
+    .comp-desktop-gallery {
+        display: none;
+        width: 0%;
+    }
+
+    .comp-question {
+        width: 100%;
+    }
+
+    .comp-m-center {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .comp-m-button {
+        margin-top: 15px;
+    }
+
+    .comp-m-buy {
+        width: 100%;
+    }
+
+    .comp-purchase-p {
+        text-align: start;
+        font-size: .83rem;
+    }
+
+    .comp-card-content {
+        padding: 0;
+    }
+
+    .comp-m-to-cart {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center!important;
+        text-align: center;
+    }
+
+    .comp-total {
+        width: 100%;
+        text-align: center;
+    }
+
+    .comp-m-gallery {
+        display: flex;
+    }
+}

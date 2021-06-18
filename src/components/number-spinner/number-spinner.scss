@@ -1,0 +1,28 @@
+.number-spinner {
+    height: fit-content;
+    background-color: #F5F5F5;
+    display: flex;
+    width: fit-content;
+    border-radius: 14px;
+    padding: 3px 0;
+    margin: 0 8px;
+    user-select: none;
+}
+
+.ns-count {
+    min-width: 32px;
+    text-align: center;
+}
+
+.ns-side {
+    margin: 0 12px;
+    cursor: pointer;
+}
+
+.ns-disabled {
+    filter: contrast(0.2);
+}
+
+.ns-svg-size {
+    width: 14px;
+}

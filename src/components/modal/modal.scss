@@ -1,0 +1,34 @@
+.modal-wrapper {
+    visibility: hidden;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    height: 100vh;
+    width: 100vw;
+}
+
+.modal-closed {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-opened {
+    visibility: visible;
+}
+
+.modal-bg {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    transition: 200ms;
+    background-color: rgba(0, 0, 0, 0.67);
+}
+
+.modal-content {
+    position: fixed;
+    opacity: 1;
+}

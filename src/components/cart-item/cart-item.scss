@@ -1,0 +1,30 @@
+.cart-item {
+    border-bottom: 4vh solid transparent;
+    border-top: 4vh solid transparent;
+    border-right: 4vw solid transparent;
+    border-left: 4vw solid transparent;
+}
+
+.cart-item-img {
+    width: 150px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100px;
+}
+
+.cart-item-title {
+    width: calc(100%/7*3.5);
+    margin: calc(100%/7*0.4);
+    font-weight: bold;
+    text-align: left;
+}
+
+.cart-item-remove {
+    width: 16px;
+    cursor: pointer;
+}
+
+.cart-item-quantity {
+    height: 100px;
+}

@@ -1,0 +1,15 @@
+.auth-button {
+    background-color: #000;
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+    font-family: 'Helvetica Neue';
+    font-size: .8rem;
+    margin: 12px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.auth-button:active {
+    transform: translateY(1px);
+}

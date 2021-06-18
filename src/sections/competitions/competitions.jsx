@@ -8,6 +8,7 @@ import "./competitions.scss";
 import CompetitionBox from "../../components/competition-box/competition-box";
 import Loader from "../../components/loader/loader";
 import ReactPaginate from 'react-paginate';
+import DBError from '../../components/db-error/db-error';
 
 
 const compsPerPage = 11;
@@ -18,6 +19,8 @@ export default function Competitions(props) {
     const [currentPage, setCurrentPage] = useState(0);
     const [maxPages, setMaxPages] = useState(0);
     const [data, setData] = useState([]);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const limit = props.limit;
 
@@ -26,8 +29,10 @@ export default function Competitions(props) {
     }, [])
 
     useEffect(() => {
-        getData(API_URL + "/competitions" + (limit !== undefined ? `?_limit=${limit}` : `?_start=${currentPage * compsPerPage}&_limit=${compsPerPage}`)).then(d => setData(d));
-    }, [currentPage])
+        getData(API_URL + "/competitions" + (limit !== undefined ? `?_limit=${limit}` : `?_start=${currentPage * compsPerPage}&_limit=${compsPerPage}`))
+            .then(d => { setData(d); setLoading(false); })
+            .catch(() => { setError(true); setLoading(false); });
+    }, [currentPage, limit])
 
     const handlePageChange = (e) => {
         setCurrentPage(e.selected);
@@ -43,16 +48,22 @@ export default function Competitions(props) {
                 </p>
             </div>
             {
-                !data ?
+                loading ?
                     <Loader></Loader> :
-                    (
-                        <div className="comp-grid">
-                            {data.map((comp, i) =>
-                                <CompetitionBox width={props.firstWide && i === 0 ? "100%" : ""} title={comp.Title} price={comp.Price} value={comp.Value} img={API_URL + comp.Images[0].url}></CompetitionBox>
-                            )}
-                        </div>
-                    )
-
+                    error ?
+                        <DBError></DBError> :
+                        data.length < 1 ?
+                            (<div className="w-100 text-center">
+                                <h2>Currently there are <u>no competitions</u>.</h2>
+                            </div>)
+                            :
+                            (
+                                <div className="comp-grid">
+                                    {data.map((comp, i) =>
+                                        <CompetitionBox key={comp.id} width={props.firstWide && i === 0 ? "100%" : ""} comp={comp}></CompetitionBox>
+                                    )}
+                                </div>
+                            )
             }
             {
                 limit ?
