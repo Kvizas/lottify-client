@@ -1,2 +1,2 @@
-export const API_URL = "http://admin.lottify.co.uk:1337";
-export const FRONT_URL = "http://localhost:3000";
+export const API_URL = "https://admin.lottify.co.uk";
+export const FRONT_URL = "https://lottify.co.uk";
