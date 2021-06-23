@@ -19,6 +19,8 @@ import CartContextProvider from "./contexts/cart-context-provider";
 import PasswordResetPage from './pages/password-reset-page/password-reset-page';
 import RegistrationSuccess from './pages/registration-success/registration-success';
 import CartPage from './pages/cart-page/cart-page';
+import CheckoutPage from './pages/checkout-page/checkout-page';
+import ProfilePage from './pages/profile-page/profile-page';
 
 function App() {
   return (
@@ -43,6 +45,8 @@ function App() {
                 <Route exact path="/password-reset/:code" component={PasswordResetPage}></Route>
                 <Route exact path="/registration-success" component={RegistrationSuccess}></Route>
                 <Route exact path="/cart" component={CartPage}></Route>
+                <Route exact path="/checkout" component={CheckoutPage}></Route>
+                <Route exact path="/profile" component={ProfilePage}></Route>
                 <Route component={NotFound}></Route>
               </Switch>
             </Footer>

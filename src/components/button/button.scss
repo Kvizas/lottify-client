@@ -10,8 +10,30 @@
     text-transform: uppercase;
     border-radius: 16px;
     cursor: pointer;
-    transition: 100ms;
+    transition: transform 100ms;
     user-select: none;
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+.btn-disabled {
+    background-color: #d88381;
+    cursor: default;
+}
+
+.btn-disabled:active {
+    transform: none;
+}
+
+.btn-black {
+    background-color: #000;
+}
+
+.btn-green {
+    color: #000;
+    background-color: #A2F0C6;
 }
 
 .btn-short {
@@ -21,15 +43,4 @@
 .btn-text {
     font: normal normal bold 0.8rem Montserrat;
     margin: 0 16px;
-}
-
-.button:active {
-    transform: translateY(1px);
-}
-
-.btn-disabled {
-    background-color: #d88381;
-}
-.btn-disabled:active {
-    transform: none;
 }

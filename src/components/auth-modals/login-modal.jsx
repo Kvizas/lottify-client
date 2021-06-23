@@ -32,8 +32,6 @@ export default function LoginModal(props) {
         setLoading(true);
         setError();
 
-        //postData(API_URL + "/auth/local/logout")
-
         postData(API_URL + "/auth/local", {
             identifier: identifier.current,
             password: password.current
@@ -47,8 +45,8 @@ export default function LoginModal(props) {
                 props.close();
             }
         }).catch(resp => {
-            console.log(resp);
             setError("Server error. Please try again later.")
+            postData(API_URL + "/auth/local/logout")
         }).finally(() => {
             setLoading(false);
         })

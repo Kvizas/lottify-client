@@ -16,10 +16,13 @@ import Button from "../../components/button/button";
 import { fixPrice } from '../../utilities/prices';
 
 import SaleSVG from "./sale.svg";
+import { useHistory } from 'react-router-dom';
 
 export default function Cart() {
 
     const { cart } = useContext(CartContext)
+
+    const history = useHistory();
 
     const { isLoading, error, data } = useQuery('cart-comps',
         () => getData(API_URL + '/competitions?id_in=' +
@@ -98,7 +101,7 @@ export default function Cart() {
                                 <TextInput className="cart-code-margin" icon={SaleSVG} placeholder="Discount code"></TextInput>
                             </div>
                             <div className="cart-checkout">
-                                <Button>Checkout</Button>
+                                <Button onClick={() => history.push('/checkout')}>Checkout</Button>
                             </div>
                         </>
             }

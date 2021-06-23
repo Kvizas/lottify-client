@@ -1,0 +1,13 @@
+.country-input {
+    font: normal normal normal 0.8rem Montserrat;
+    height: 100%;
+    border: none;
+    margin-right: 3%;
+    background-color: transparent;
+    flex: 1;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.country-input:focus {
+    outline: none;
+}

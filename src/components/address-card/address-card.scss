@@ -1,0 +1,83 @@
+.address-card {
+    background: #FCFCFC 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    width: 45%;
+    height: 152px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin: 2.5%;
+    padding: 0 2.5%;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    transition: border 500ms, transform 200ms;
+    position: relative;
+    user-select: none;
+}
+
+.address-card-selected {
+    border: 2px solid #E05955;
+}
+
+.address-card-slectable {
+    cursor: pointer;
+}
+
+.address-card-slectable:hover {
+    transform: scale(1.01);
+}
+
+.address-card-slectable:active {
+    transform: scale(1);
+}
+
+.address-card-add {
+    color: #E05955;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+
+.address-card-new p {
+    margin: 7px 0;
+    width: 80%;
+    font-size: .8rem;
+    opacity: .7;
+    text-align: center;
+}
+
+.address-card-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.address-card-data {
+    margin: 2px 0;
+    font-size: .8rem;
+}
+
+.address-card-del {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    background-color: #d18885;
+    transition: background-color 200ms;
+    padding: 4px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.address-card-del:hover {
+    background-color: #e05955;
+}
+
+.address-card-del-icon {
+    width: 18px;
+}

@@ -1,9 +1,14 @@
 @import "./fonts/fonts";
 
 $red-color: #DF5854;
+$green-color: #A2F0C6;
 
 .red { 
     color: $red-color;
+}
+
+.green { 
+    color: $green-color;
 }
 
 h1, h2, h3, h4, h5, h6, li {
@@ -27,7 +32,7 @@ h3 {
     margin: 12px 0;
 }
 h4 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin: 12px 0;
 }
 
@@ -107,6 +112,10 @@ html {
 
 .text-left {
     text-align: left;
+}
+
+.text-right {
+    text-align: end;
 }
 
 .w-50 {
