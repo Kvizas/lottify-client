@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import TextInput from '../text-input/text-input'
 import CountryInput from '../../components/country-input/country-input'
