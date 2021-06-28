@@ -9,3 +9,25 @@
     top: -34px;
     width: 85%;
 }
+
+@media(max-width: 1100px) {
+    .profile-dash-h {
+        text-align: center;
+        font-size: 1.4rem;
+    }
+}
+
+
+@media(max-width: 1300px) {
+    .profile-floating-nav {
+        top: -40px;
+    }
+
+    .profile-h-margin {
+        margin-bottom: 50px;
+    }
+
+    .profile-nav-btn {
+        min-width: 160px;
+    }
+}

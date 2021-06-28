@@ -1,0 +1,16 @@
+.address-new {
+    width: 70%;
+    margin-bottom: 32px;
+    margin: auto;
+}
+
+@media(max-width: 1100px) {
+
+    .address-new-btn {
+        min-width: 120px;
+    }
+
+    .address-new {
+        width: 100%;
+    }
+}

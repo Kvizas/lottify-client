@@ -8,7 +8,7 @@
     justify-content: center;
     align-content: center;
     margin: 2.5%;
-    padding: 0 2.5%;
+    padding: 0 20px;
     box-sizing: border-box;
     border: 2px solid transparent;
     transition: border 500ms, transform 200ms;
@@ -53,6 +53,7 @@
     justify-content: center;
     font-weight: 600;
     font-size: 1.1rem;
+    text-align: center;
 }
 
 .address-card-data {
@@ -80,4 +81,11 @@
 
 .address-card-del-icon {
     width: 18px;
+}
+
+@media(max-width: 1100px) {
+    .address-card {
+        width: 100%;
+        margin: 4% 0;
+    }
 }

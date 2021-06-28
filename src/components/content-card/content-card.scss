@@ -6,3 +6,11 @@
     padding: 24px 8%;
     margin: 18px 0;
 }
+
+@media(max-width: 1100px) {
+    .content-card-hidden {
+        background: transparent;
+        -webkit-box-shadow: none; 
+        box-shadow: none;
+    }
+}

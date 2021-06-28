@@ -7,6 +7,8 @@ import Button from '../button/button'
 import postData from "../../requests/post-data";
 import { API_URL } from "../../settings";
 
+import "./address-new.scss";
+
 import { checkName, checkPhone } from '../../utilities/input-checks'
 
 export default function AddressNew({ onCancel, onSuccess }) {
@@ -67,7 +69,7 @@ export default function AddressNew({ onCancel, onSuccess }) {
     }
 
     return (
-        <form style={{ width: "70%", margin: "auto", marginBottom: "32px" }}>
+        <form className="address-new">
             <h4>Adding new address</h4>
             <TextInput value={firstName} placeholder="First name"></TextInput>
             <TextInput value={lastName} placeholder="Last name"></TextInput>
@@ -78,8 +80,8 @@ export default function AddressNew({ onCancel, onSuccess }) {
             <TextInput value={phone} placeholder="Phone number"></TextInput>
             <p className="red">{error}</p>
             <div className="w-100 d-flex justify-space-between">
-                <Button onClick={onCancel} black={true}>Go back</Button>
-                <Button onClick={add}>Add</Button>
+                <Button className="address-new-btn" onClick={onCancel} black={true}>Go back</Button>
+                <Button className="address-new-btn" onClick={add}>Add</Button>
             </div>
         </form>
     )

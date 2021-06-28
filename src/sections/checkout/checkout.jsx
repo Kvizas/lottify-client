@@ -30,6 +30,7 @@ export default function Checkout() {
 
     const [address, setAddress] = useState()
     const [addressSubmitted, setAddressSubmitted] = useState()
+    const [addingAddress, setAddingAddress] = useState()
 
     const [guestEmail, setGuestEmail] = useState()
 
@@ -37,7 +38,7 @@ export default function Checkout() {
 
     return (
         <section className="section">
-            <h2 style={{ width: "95%" }}>Checkout</h2>
+            <h2 className="mobile-section-h" style={{ width: "95%" }}>Checkout</h2>
             {!addressSubmitted ?
                 <ContentCard>
                     {
@@ -45,7 +46,7 @@ export default function Checkout() {
                             <>
                                 <h4>Select your billing address</h4>
                                 <QueryClientProvider client={new QueryClient()}>
-                                    <AddressList onSelect={address => setAddress(address)} />
+                                    <AddressList onSelect={address => setAddress(address)} onAdding={val => setAddingAddress(val)} />
                                 </QueryClientProvider>
                             </>
                             :
@@ -55,10 +56,15 @@ export default function Checkout() {
                             }} />
                     }
 
-                    <div className="w-100 d-flex justify-space-between" style={{ marginTop: "24px" }}>
-                        <Button onClick={() => history.push('/cart')} black={true}>Return to cart</Button>
-                        <Button onClick={() => setAddressSubmitted(true)} disabled={!address}>Proceed payment</Button>
-                    </div>
+                    {
+                        addingAddress ?
+                            ""
+                            :
+                            <div className="w-100 d-flex justify-space-between" style={{ marginTop: "24px" }}>
+                                <Button onClick={() => history.push('/cart')} black={true}>Return to cart</Button>
+                                <Button onClick={() => setAddressSubmitted(true)} disabled={!address}>Proceed</Button>
+                            </div>
+                    }
                 </ContentCard>
                 :
                 <>
@@ -98,7 +104,7 @@ export default function Checkout() {
                     <ContentCard>
                         <h4>Enter your credit/debit card details</h4>
                         <CardDetails></CardDetails>
-                        <div className="w-100 d-flex justify-space-between" style={{ marginTop: "24px" }}>
+                        <div className="w-100 d-flex justify-space-between align-center" style={{ marginTop: "24px" }}>
                             <Button onClick={() => setAddressSubmitted(false)} black={true}>Change address</Button>
                             <Button onClick={() => setAddressSubmitted(true)} disabled={!address}>Confirm payment</Button>
                         </div>

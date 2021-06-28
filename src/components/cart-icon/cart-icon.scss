@@ -14,4 +14,11 @@
     text-decoration: none;
     color: #e05955;
     background-color: #fff;
+    text-align: center;
+}
+
+@media(max-width: 1100px) {
+    .badge {
+        top: -15px;
+    }
 }

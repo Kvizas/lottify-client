@@ -8,7 +8,7 @@ import AddressCard from '../address-card/address-card'
 import DbError from "../db-error/db-error";
 import AddressNew from '../address-new/address-new'
 
-export default function AddressList({ onSelect, editable }) {
+export default function AddressList({ onSelect, editable, onAdding }) {
 
     const { isLoading, error, data, refetch } = useQuery('addresses', () =>
         getData(API_URL + "/users/me")
@@ -24,26 +24,28 @@ export default function AddressList({ onSelect, editable }) {
 
     const addNew = () => {
         setAddingNew(true);
+        if (onAdding) onAdding(true);
     }
 
     if (isLoading) return <Loader></Loader>
     if (error) return <DbError></DbError>
 
-    console.log(data);
-
     return (
         <div className="w-100 d-flex f-wrap">
             {addingNew ?
                 <AddressNew
-                    onCancel={() => setAddingNew(false)}
+                    onCancel={() => {
+                        setAddingNew(false);
+                        if (onAdding) onAdding(false);
+                    }}
                     onSuccess={() => {
                         refetch();
+                        if (onAdding) onAdding(false);
                         setAddingNew(false);
                     }}
                 />
                 :
                 <>
-                    {console.log(data)}
                     {data.Address.map((address, i) =>
                         <AddressCard
                             refetch={refetch}

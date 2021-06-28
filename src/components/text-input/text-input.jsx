@@ -10,18 +10,26 @@ export default function TextInput(props) {
     }
 
     return (
-        <div className={`text-input ${props.className}`} style={props.style}>
+        <div className={`text-input ${props.className || ""}`} style={props.style}>
             {props.icon ?
                 <div className="text-input-icon">
                     <img alt="" src={props.icon} style={props.iconStyle}></img>
                 </div>
                 : ""}
-            <input
-                className={props.icon ? "" : "text-input-no-icon"}
-                type={props.type ? props.type : "text"}
-                placeholder={props.placeholder}
-                onChange={change}
-            ></input>
+            {
+                props.textArea ?
+                    <textarea
+                        className={props.icon ? "" : "text-input-no-icon"}
+                        type={props.type ? props.type : "text"}
+                        placeholder={props.placeholder}
+                        onChange={change} />
+                    :
+                    <input
+                        className={props.icon ? "" : "text-input-no-icon"}
+                        type={props.type ? props.type : "text"}
+                        placeholder={props.placeholder}
+                        onChange={change} />
+            }
         </div>
     )
 }

@@ -21,6 +21,7 @@ import RegistrationSuccess from './pages/registration-success/registration-succe
 import CartPage from './pages/cart-page/cart-page';
 import CheckoutPage from './pages/checkout-page/checkout-page';
 import ProfilePage from './pages/profile-page/profile-page';
+import ContactPage from './pages/contact-page/contact-page';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
                 <Route exact path="/cart" component={CartPage}></Route>
                 <Route exact path="/checkout" component={CheckoutPage}></Route>
                 <Route exact path="/profile" component={ProfilePage}></Route>
+                <Route exact path="/contact-us" component={ContactPage}></Route>
                 <Route component={NotFound}></Route>
               </Switch>
             </Footer>
