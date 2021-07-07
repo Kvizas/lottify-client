@@ -25,3 +25,16 @@ export const checkPhone = phone => {
         return "Your phone number has incorrect format.";
     return true;
 }
+
+export const checkCard = card => {
+    //Visa, MasterCard, American Express, Diners Club, Discover, and JCB
+    if (!/^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/.test(card))
+        return "Card number is invalid.";
+    return true;
+}
+
+export const checkCVV = cvv => {
+    if (!/^[0-9]{3,4}$/.test(cvv))
+        return "Card security number is invalid.";
+    return true;
+}

@@ -5,8 +5,8 @@ import "./text-input.scss";
 export default function TextInput(props) {
 
     const change = c => {
-        props.value.current = c.target.value;
-        if (props.onChange) props.onChange(c.target.value);
+        if (props.value) props.value.current = c.target.value;
+        if (props.onChange) props.onChange(c.target.value, c);
     }
 
     return (
@@ -28,6 +28,7 @@ export default function TextInput(props) {
                         className={props.icon ? "" : "text-input-no-icon"}
                         type={props.type ? props.type : "text"}
                         placeholder={props.placeholder}
+                        value={props.default}
                         onChange={change} />
             }
         </div>

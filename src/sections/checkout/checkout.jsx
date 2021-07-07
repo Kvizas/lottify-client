@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 
 import ContentCard from '../../components/content-card/content-card'
 import AddressList from '../../components/address-list/address-list'
@@ -15,12 +15,14 @@ import GuestAddress from '../../components/guest-address/guest-address'
 import { getData } from '../../requests/get-data'
 import { API_URL } from '../../settings'
 import { fixPrice } from '../../utilities/prices'
+import postData from '../../requests/post-data'
+import Success from "../../components/success/success";
 
 
-export default function Checkout() {
+export default function Checkout({ props }) {
 
     const { user } = useContext(UserContext);
-    const { cart } = useContext(CartContext);
+    const { cart, setCart } = useContext(CartContext);
 
     const { isLoading, error, data } = useQuery('cart-comps',
         () => getData(API_URL + '/competitions?id_in=' +
@@ -28,13 +30,67 @@ export default function Checkout() {
         )
     );
 
+    const [success, setSuccess] = useState()
+    const [paymentError, setPaymentError] = useState()
+
+    const [discount] = useState(props.location.state.discount)
+    const [discountCode] = useState(props.location.state.discountCode)
+
     const [address, setAddress] = useState()
     const [addressSubmitted, setAddressSubmitted] = useState()
     const [addingAddress, setAddingAddress] = useState()
 
-    const [guestEmail, setGuestEmail] = useState()
+    const [card, setCard] = useState(false)
+
+    const [total, setTotal] = useState()
 
     const history = useHistory();
+
+    const pay = () => {
+        setPaymentError();
+
+        postData(API_URL + "/lottify/pay", {
+            card,
+            cart,
+            total,
+            address: address,
+            discountCode
+        }).then(resp => {
+            if (resp.statusCode !== 200) return setPaymentError(resp.message);
+
+            setSuccess(true);
+            setCart({ products: [] })
+
+        }).catch(() => {
+            setPaymentError("Server error. Please try again later.")
+        })
+    }
+
+    useEffect(() => {
+        if (!data) return;
+        setTotal(fixPrice(cart.products.map(prod =>
+            fixPrice(prod.quantity * data.find(comps => comps.id === parseInt(prod.compId)).Price))
+            .reduce((a, b) => a + b, 0)))
+    }, [cart, data])
+
+    if (success)
+        return (
+            <section className="section">
+                <Success title="Your payment was successful!">
+                    We sent a confirmation email to <b>{user ? user.email : address.Email}</b>
+                    <br />Email will arrive in a few moments!
+                </Success>
+            </section>
+        )
+
+    const getSubtotal = () => {
+
+        if (!discount) return '£' + total;
+
+        const discounted = fixPrice(total * (1 - discount / 100));
+
+        return <><s>£{total}</s> £{discounted}</>;
+    }
 
     return (
         <section className="section">
@@ -50,9 +106,8 @@ export default function Checkout() {
                                 </QueryClientProvider>
                             </>
                             :
-                            <GuestAddress onSuccess={(address, email) => {
+                            <GuestAddress onSuccess={(address) => {
                                 setAddress(address);
-                                setGuestEmail(email);
                             }} />
                     }
 
@@ -84,16 +139,14 @@ export default function Checkout() {
                                                 const compData = data.find(data => data.id === parseInt(ticket.compId));
                                                 return <p style={{ margin: "6px 0" }}><span className="red">{ticket.quantity}</span> <b>×</b> {compData.Title}</p>;
                                             })}
-                                            <p><b>Total:</b> <span className="red">£{fixPrice(cart.products.map(prod =>
-                                                fixPrice(prod.quantity * data.find(comps => comps.id === parseInt(prod.compId)).Price))
-                                                .reduce((a, b) => a + b, 0))}</span></p>
+                                            <p><b>Total:</b> <span className="red">{getSubtotal()}</span></p>
                                         </>
                                 }
                             </div>
                             <div className="w-50 text-right">
                                 <p><b>Billing address</b></p>
                                 <p style={{ margin: "6px 0" }}>{address.FirstName} {address.LastName}</p>
-                                <p style={{ margin: "6px 0" }}>{user ? user.email : guestEmail}</p>
+                                <p style={{ margin: "6px 0" }}>{user ? user.email : address.Email}</p>
                                 <p style={{ margin: "6px 0" }}>{address.StreetAddress}</p>
                                 <p style={{ margin: "6px 0" }}>{address.City}, {address.PostCode}</p>
                                 <p style={{ margin: "6px 0" }}>{address.Country}</p>
@@ -103,10 +156,11 @@ export default function Checkout() {
                     </ContentCard>
                     <ContentCard>
                         <h4>Enter your credit/debit card details</h4>
-                        <CardDetails></CardDetails>
+                        <CardDetails setData={setCard}></CardDetails>
+                        <p className="red">{paymentError}</p>
                         <div className="w-100 d-flex justify-space-between align-center" style={{ marginTop: "24px" }}>
                             <Button onClick={() => setAddressSubmitted(false)} black={true}>Change address</Button>
-                            <Button onClick={() => setAddressSubmitted(true)} disabled={!address}>Confirm payment</Button>
+                            <Button onClick={pay} disabled={card === false}>Confirm payment</Button>
                         </div>
                     </ContentCard>
                 </>

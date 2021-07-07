@@ -12,6 +12,15 @@
     max-height: 300px;
 }
 
+.text-input input[type=number]::-webkit-inner-spin-button,
+.text-input input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.text-input input[type=number] {
+    -moz-appearance: textfield;
+  }
+
 .text-input input, .text-input textarea {
     font: normal normal normal 0.8rem Montserrat;
     border: none;

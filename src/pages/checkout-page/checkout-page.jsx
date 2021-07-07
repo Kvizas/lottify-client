@@ -3,10 +3,10 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 
 import Checkout from '../../sections/checkout/checkout'
 
-export default function CheckoutPage() {
+export default function CheckoutPage(props) {
     return (
         <QueryClientProvider client={new QueryClient()}>
-            <Checkout></Checkout>
+            <Checkout props={props}></Checkout>
         </QueryClientProvider>
     )
 }

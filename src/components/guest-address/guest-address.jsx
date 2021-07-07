@@ -45,6 +45,7 @@ export default function GuestAddress({ onSuccess }) {
 
         setError();
         onSuccess({
+            Email: email.current,
             FirstName: firstName.current,
             LastName: lastName.current,
             Country: country.current,
@@ -52,7 +53,7 @@ export default function GuestAddress({ onSuccess }) {
             City: city.current,
             PostCode: postcode.current,
             Phone: phone.current
-        }, email.current);
+        });
     };
 
     return (

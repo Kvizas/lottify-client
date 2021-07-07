@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom'
 import postData from '../../requests/post-data'
 import { API_URL } from '../../settings'
 
-export default function ContactForm({ }) {
+export default function ContactForm() {
 
     const [isLoading, setIsLoading] = useState()
     const [error, setError] = useState()
@@ -31,7 +31,7 @@ export default function ContactForm({ }) {
             lastName: lastName.current,
             msg: message.current
         }).then(resp => {
-            if (resp.statusCode == 200) {
+            if (resp.statusCode === 200) {
                 setSuccess(true);
             } else {
                 console.log(resp);
@@ -71,7 +71,7 @@ export default function ContactForm({ }) {
             }
 
             {
-                window.location.pathname != "/faq" ?
+                window.location.pathname !== "/faq" ?
                     <>
                         <h2 className="w-100" style={{ marginTop: "84px" }}>Contact info</h2>
                         <div className="w-100 d-flex align-center justify-space-between f-wrap">

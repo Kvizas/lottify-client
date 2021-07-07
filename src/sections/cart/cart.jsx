@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useQuery } from 'react-query';
 import CartItem from '../../components/cart-item/cart-item';
 import CartItemMobile from '../../components/cart-item-mobile/cart-item-mobile';
 
 import { getData } from '../../requests/get-data';
+import postData from '../../requests/post-data';
 
 import { CartContext } from '../../contexts/cart-context-provider';
 
@@ -30,6 +31,61 @@ export default function Cart() {
             cart.products.map(prod => prod.compId).join("&id_in=")
         )
     );
+
+    const [discountCode, setDiscountCode] = useState()
+    const [discountStatus, setDiscountStatus] = useState('none')
+    const [discount, setDiscount] = useState()
+
+    useEffect(() => {
+        if (!discountCode) return setDiscountStatus('none');
+        setDiscountStatus('checking')
+        const t = setTimeout(() => {
+            postData(API_URL + "/lottify/checkCode", {
+                Code: discountCode
+            }).then(resp => {
+                if (resp.statusCode === 200) {
+                    setDiscount(resp.percentage || undefined);
+                    setDiscountStatus(resp.percentage ? 'valid' : 'invalid')
+                }
+            }).catch(() => setDiscountStatus('invalid'))
+        }, 500)
+        return () => clearTimeout(t);
+    }, [discountCode])
+
+    const getDiscountText = () => {
+        switch (discountStatus) {
+            case 'none':
+                return;
+            case 'invalid':
+                return <>Code invalid</>;
+            case 'checking':
+                return <>Checking...</>;
+            default:
+                return <><b>-{discount}%</b> code was applied</>
+        }
+    }
+
+    const getSubtotal = () => {
+        const subtotal = fixPrice(cart.products.map(prod =>
+            prod.quantity * data.find(comps => comps.id === parseInt(prod.compId)).Price)
+            .reduce((a, b) => a + b))
+
+        if (!discount) return '£' + subtotal;
+
+        const discounted = fixPrice(subtotal * (1 - discount / 100));
+
+        return <><s>£{subtotal}</s> £{discounted}</>;
+    }
+
+    const redirectToCheckout = () => {
+        history.push({
+            pathname: '/checkout',
+            state: {
+                discountCode: discountStatus === 'valid' ? discountCode : undefined,
+                discount: discountStatus === 'valid' ? discount : undefined
+            }
+        })
+    }
 
     return (
         <section className="section">
@@ -87,23 +143,27 @@ export default function Cart() {
                                                 <td style={{ paddingBottom: "0", paddingTop: "0" }} className="text-left">Got a discount?</td>
                                             </tr>
                                             <tr className="cart-row-border">
-                                                <td style={{ paddingTop: "0" }} className="cart-m-hide">
-                                                    <TextInput className="cart-code-margin" icon={SaleSVG} placeholder="Discount code"></TextInput>
+                                                <td style={{ paddingTop: "0", paddingBottom: "0" }} className="cart-m-hide">
+                                                    <TextInput onChange={v => setDiscountCode(v)} className="cart-code-margin" icon={SaleSVG} placeholder="Discount code"></TextInput>
                                                 </td>
-                                                <td>{cart.products.map(prod => prod.quantity).reduce((a, b) => a + b, 0)}</td>
-                                                <td className="red">£{fixPrice(cart.products.map(prod =>
-                                                    fixPrice(prod.quantity * data.find(comps => comps.id === parseInt(prod.compId)).Price))
-                                                    .reduce((a, b) => a + b, 0))}</td>
+                                                <td style={{ paddingTop: "0", paddingBottom: "0" }}>{cart.products.map(prod => prod.quantity).reduce((a, b) => a + b, 0)}</td>
+                                                <td style={{ paddingTop: "0", paddingBottom: "0" }} className="red">{getSubtotal()}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style={{ paddingTop: "0" }}>
+                                                    <p className="cart-m-hide" style={{ fontSize: ".7rem", margin: "0", textAlign: "left" }}>{getDiscountText()}</p>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div className="cart-m-discount w-100">
                                     Got a discount?
-                                    <TextInput className="cart-code-margin" icon={SaleSVG} placeholder="Discount code"></TextInput>
+                                    <TextInput onChange={v => setDiscountCode(v)} className="cart-code-margin" icon={SaleSVG} placeholder="Discount code"></TextInput>
+                                    <p style={{ fontSize: ".7rem", margin: "0", textAlign: "left" }}>{getDiscountText()}</p>
                                 </div>
                                 <div className="cart-checkout">
-                                    <Button onClick={() => history.push('/checkout')}>Checkout</Button>
+                                    <Button onClick={redirectToCheckout}>Checkout</Button>
                                 </div>
                             </>
                             :
