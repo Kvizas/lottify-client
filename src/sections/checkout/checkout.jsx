@@ -32,6 +32,7 @@ export default function Checkout({ props }) {
 
     const [success, setSuccess] = useState()
     const [paymentError, setPaymentError] = useState()
+    const [waitingPayment, setWaitingPayment] = useState()
 
     const [discount] = useState(props.location.state.discount)
     const [discountCode] = useState(props.location.state.discountCode)
@@ -48,6 +49,7 @@ export default function Checkout({ props }) {
 
     const pay = () => {
         setPaymentError();
+        setWaitingPayment(true);
 
         postData(API_URL + "/lottify/pay", {
             card,
@@ -63,7 +65,7 @@ export default function Checkout({ props }) {
 
         }).catch(() => {
             setPaymentError("Server error. Please try again later.")
-        })
+        }).finally(() => setWaitingPayment(false))
     }
 
     useEffect(() => {
@@ -156,7 +158,12 @@ export default function Checkout({ props }) {
                     </ContentCard>
                     <ContentCard>
                         <h4>Enter your credit/debit card details</h4>
-                        <CardDetails setData={setCard}></CardDetails>
+                        {
+                            waitingPayment ?
+                                <Loader></Loader>
+                                :
+                                <CardDetails setData={setCard}></CardDetails>
+                        }
                         <p className="red">{paymentError}</p>
                         <div className="w-100 d-flex justify-space-between align-center" style={{ marginTop: "24px" }}>
                             <Button onClick={() => setAddressSubmitted(false)} black={true}>Change address</Button>

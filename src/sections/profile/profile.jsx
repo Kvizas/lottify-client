@@ -7,9 +7,6 @@ import AddressList from '../../components/address-list/address-list'
 import AccountDetails from '../../components/account-details/account-details'
 
 import "./profile.scss"
-import { QueryClient } from 'react-query'
-import { QueryClientProvider } from 'react-query'
-
 
 export default function Profile() {
 
@@ -48,12 +45,9 @@ export default function Profile() {
                             <AccountDetails />
                             :
                             nav === "Addresses" ?
-                                <QueryClientProvider client={new QueryClient()}>
-                                    <AddressList editable={true} />
-                                </QueryClientProvider>
+                                <AddressList editable={true} />
                                 :
-                                <>
-                                </>
+                                <> </>
                 }
 
             </ContentCard>

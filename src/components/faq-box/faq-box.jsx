@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 
 import "./faq-box.scss";
 
-import { ReactComponent as Arrow } from "./ios-arrow-down.svg";
+import { ReactComponent as Arrow } from "../../assets/misq/ios-arrow-down.svg";
 
 export default function FAQBox(props) {
 

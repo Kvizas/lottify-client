@@ -3,6 +3,8 @@ import Profile from '../../sections/profile/profile'
 
 import { useHistory } from "react-router-dom";
 import { UserContext } from '../../contexts/user-context-provider';
+import Entries from '../../sections/entries/entries';
+import UserUpdateContextProvider from '../../contexts/user-update-context-provider';
 
 export default function ProfilePage() {
 
@@ -15,6 +17,9 @@ export default function ProfilePage() {
     }
 
     return (
-        <Profile></Profile>
+        <UserUpdateContextProvider>
+            <Profile></Profile>
+            <Entries></Entries>
+        </UserUpdateContextProvider>
     )
 }

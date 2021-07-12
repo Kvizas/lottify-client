@@ -1,18 +1,13 @@
-import React, { useState } from 'react'
-import { useQuery } from 'react-query'
-import { getData } from '../../requests/get-data'
-import { API_URL } from '../../settings'
-
-import Loader from '../loader/loader'
+import React, { useContext, useState } from 'react'
 import AddressCard from '../address-card/address-card'
-import DbError from "../db-error/db-error";
 import AddressNew from '../address-new/address-new'
+import { UserContext } from '../../contexts/user-context-provider'
+import { UserUpdateContext } from "../../contexts/user-update-context-provider";
 
 export default function AddressList({ onSelect, editable, onAdding }) {
 
-    const { isLoading, error, data, refetch } = useQuery('addresses', () =>
-        getData(API_URL + "/users/me")
-    )
+    const { user } = useContext(UserContext)
+    const forceUpdate = useContext(UserUpdateContext)
 
     const [selected, setSelected] = useState()
     const [addingNew, setAddingNew] = useState()
@@ -27,9 +22,6 @@ export default function AddressList({ onSelect, editable, onAdding }) {
         if (onAdding) onAdding(true);
     }
 
-    if (isLoading) return <Loader></Loader>
-    if (error) return <DbError></DbError>
-
     return (
         <div className="w-100 d-flex f-wrap">
             {addingNew ?
@@ -39,20 +31,21 @@ export default function AddressList({ onSelect, editable, onAdding }) {
                         if (onAdding) onAdding(false);
                     }}
                     onSuccess={() => {
-                        refetch();
+                        forceUpdate();
                         if (onAdding) onAdding(false);
                         setAddingNew(false);
                     }}
                 />
                 :
                 <>
-                    {data.Address.map((address, i) =>
+                    {user.Address.map((address, i) =>
                         <AddressCard
-                            refetch={refetch}
+                            refetch={forceUpdate}
                             editable={editable}
                             data={address}
                             onSelect={onSelect ? address => select(address, i) : undefined}
                             selected={selected === i}
+                            key={i}
                         />
                     )}
                     <AddressCard onSelect={addNew} />
