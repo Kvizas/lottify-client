@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react'
 import TextInput from '../text-input/text-input';
 import AuthButton from '../auth-button/auth-button';
 import Loader from "../loader/loader";
+import Checkbox from "../checkbox/checkbox"
 
 import UserSvg from "../../assets/auth/user.svg";
 import PasswordSvg from "../../assets/auth/password.svg";
@@ -25,6 +26,7 @@ export default function RegisterModal(props) {
     const email = useRef()
     const password = useRef()
     const password2nd = useRef()
+    const [marketingConsent, setMarketingConsent] = useState(false)
 
     const signUp = () => {
 
@@ -57,7 +59,8 @@ export default function RegisterModal(props) {
         postData(API_URL + "/auth/local/register", {
             username: username.current,
             email: email.current,
-            password: password.current
+            password: password.current,
+            marketing: marketingConsent
         }).then(resp => {
             setLoading(false);
             if (resp.statusCode === 400) {
@@ -67,7 +70,7 @@ export default function RegisterModal(props) {
             else {
                 setSentToEmail(email.current);
             }
-        }).catch(resp => {
+        }).catch(() => {
             setError("Server error. Please try again later.")
             setLoading(false);
         })
@@ -97,6 +100,9 @@ export default function RegisterModal(props) {
                                 <TextInput value={email} icon={UserSvg} placeholder={"Email"}></TextInput>
                                 <TextInput value={password} icon={PasswordSvg} type="password" placeholder={"Password"}></TextInput>
                                 <TextInput value={password2nd} icon={PasswordSvg} type="password" placeholder={"Repeat password"}></TextInput>
+                                <Checkbox small={true} checked={marketingConsent} onChange={() => setMarketingConsent(prev => !prev)}>
+                                    I would like to receive discounts, marketing offers and newsletters related to Lottify
+                                </Checkbox>
                                 <p className="auth-error">{error}</p>
                                 <AuthButton onClick={signUp}>Sign up</AuthButton>
                             </form>

@@ -43,8 +43,7 @@ export default function Competitions(props) {
             <div className="section-text-box">
                 <h1>Current Competitions</h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscingin elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur.
+                    One of those prizes could be yours!
                 </p>
             </div>
             {

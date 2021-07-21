@@ -37,9 +37,7 @@ export default function TimeUntilClose() {
             <div className="tuc-left tuc-block">
                 <div className="tuc-text-box">
                     <h1 className="tuc-h1">Win something you always dreamt about</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Velit id minima reprehenderit maiores nam laborum nihil
-                        aperiam debitis.</p>
+                    <p>Welcome to Lottify, our fixed odd competitions give you the chance to <strong>WIN your dream car, holiday, or expensive tech</strong></p>
                 </div>
             </div>
             <div className="tuc-right tuc-block">

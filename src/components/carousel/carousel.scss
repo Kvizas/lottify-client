@@ -9,12 +9,19 @@
 }
 
 .carousel-transition {
-    transition: transform 1000ms, opacity 300ms;
+    transition: transform 1000ms, opacity 1000ms;
+}
+
+.carousel-transition.carousel-far-prev-img,
+.carousel-transition.carousel-far-next-img
+{
+    transition: transform 1000ms, opacity 0ms 1000ms;
 }
 
 .carousel-prev-img {
     transform: translateX(-103%);
     width: 100%;
+    opacity: 0.5;
 }
 .carousel-far-prev-img {
     transform: translateX(2 * -103%);
@@ -33,11 +40,29 @@
 .carousel-next-img {
     transform: translateX(103%);
     width: 100%;
+    opacity: 0.5;
 }
 .carousel-far-next-img {
     transform: translateX(2 * 103%);
     width: 100%;
     opacity: 0;
+}
+
+.carousel-overlay {
+    transition: background-color 1000ms;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.carousel-curr-img .carousel-overlay {
+    background-color: transparent;
+}
+
+.carousel-next-img .carousel-overlay,
+.carousel-prev-img .carousel-overlay {
+    background-color: #e059558a;
 }
 
 .carousel-sides {
@@ -46,4 +71,70 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+.carousel-title {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.carousel-buttons {
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: calc(50% - 9.225px);
+    margin: auto 0;
+}
+
+.carousel-btn {
+    padding: 0 14px;
+    width: 12px;
+    fill: rgb(100, 100, 100);
+    cursor: pointer;
+    transition: fill 300ms;
+}
+
+.carousel-btn:hover {
+    fill: #000;
+}
+
+.carousel-btn-reverse {
+    transform: scaleX(-1);
+}
+
+.carousel-content {
+    transition: opacity 1000ms, height 1000ms;
+    width: 100%;
+}
+
+.carousel-content-hidden {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+@media(max-width: 1100px) {
+
+    .carousel-images {
+        justify-content: center;
+    }
+
+    .carousel-sides {
+        opacity: 0;
+        height: 22vh;
+    }
+
+    .carousel-curr-img {
+        height: 22vh;
+    }
+
+    .carousel-buttons {
+        display: none;
+    }
+
+    .carousel-btn {
+        margin: auto 5%;
+    }
 }

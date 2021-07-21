@@ -21,7 +21,7 @@ export const checkName = name => {
 }
 
 export const checkPhone = phone => {
-    if (!/^(\+\d{1,2}\s?)?1?-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(phone))
+    if (!/^((\+44(\s\(0\)\s|\s0\s|\s)?)|0)7\d{3}(\s)?\d{6}$/.test(phone))
         return "Your phone number has incorrect format.";
     return true;
 }

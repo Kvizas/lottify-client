@@ -57,7 +57,7 @@ export default function FAQSection() {
                             }
                         </div>
                         <div className="faq-categories">
-                            <h2>Categories</h2>
+                            <h3>Categories</h3>
                             <ul>
                                 <li className={activeCategory == null ? "faq-active-cat" : ""} key="all" onClick={() => setActiveCategory(undefined)}>All ({data.length})</li>
                                 {Object.keys(categories).map(title =>

@@ -37,7 +37,7 @@ export default function FAQBox(props) {
     return (
         <div className="faq-box">
             <div className="faq-content">
-                <h4 onClick={expand}>{props.title}</h4>
+                <p className="faq-title" onClick={expand}>{props.title}</p>
                 <p style={{ opacity: "0", maxHeight: "0" }} ref={para}>{props.children}</p>
             </div>
             <Arrow className="faq-arrow" ref={arrow} onClick={expand}></Arrow>

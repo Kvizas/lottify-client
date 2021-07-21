@@ -102,7 +102,7 @@ export default function Competition(props) {
                                         <h3 className="comp-header">Answer the question:</h3>
                                         <p className="comp-subheader comp-question-p">Please answer the skilled question to have a chance to win this prize</p>
                                         <h3 className="comp-header">{compData.Question}</h3>
-                                        {compData.Answers.map(a => <Checkbox key={a.id} id={a.id} name="answer" onChange={() => setAnswer(a.id)}>{a.Answer}</Checkbox>)}
+                                        {compData.Answers.map(a => <Checkbox key={a.id} checked={answer === a.id} onChange={() => setAnswer(a.id)}>{a.Answer}</Checkbox>)}
                                         <Button className="comp-m-button" onClick={() => setSubmitted(true)} disabled={answer === undefined}>Submit answer</Button>
                                     </div> :
                                         <div className="d-flex f-wrap">

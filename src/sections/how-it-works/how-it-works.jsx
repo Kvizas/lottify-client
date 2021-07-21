@@ -9,11 +9,11 @@ import WinSVG from "./assets/win.svg";
 export default function HowItWorks() {
     return (
         <div className="section hiw-main" id="how-it-works">
-            <h1 className="hiw-title">How it works?</h1>
+            <h1 style={{ marginBottom: "48px" }} className="hiw-title">How it works?</h1>
             <div className="d-flex f-wrap justify-space-between">
                 <div className="hiw-step">
                     <img className="hiw-img" src={ChooseSVG} alt="" />
-                    <h2>Choose a competition</h2>
+                    <h3>Choose a competition</h3>
                     <p>
                         Answer qualifying questions and purchase tickets to be entered in our draws
                     </p>
@@ -21,7 +21,7 @@ export default function HowItWorks() {
                 <div className="hiw-break"></div>
                 <div className="hiw-step">
                     <img className="hiw-img" src={TicketSVG} alt="" />
-                    <h2>Buy a lucky ticket</h2>
+                    <h3>Buy a lucky ticket</h3>
                     <p>
                         All correct answers are entered in the draw
                     </p>
@@ -29,7 +29,7 @@ export default function HowItWorks() {
                 <div className="hiw-break"></div>
                 <div className="hiw-step">
                     <img className="hiw-img" src={WinSVG} alt="" />
-                    <h2>Win amazing prizes</h2>
+                    <h3>Win amazing prizes</h3>
                     <p>
                         We will contact you to congratulate after the competition
                     </p>

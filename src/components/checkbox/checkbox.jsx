@@ -1,21 +1,14 @@
-import React, { useRef } from 'react'
+import React from 'react'
 
 import "./checkbox.scss";
 
-export default function Checkbox(props) {
-    const id = props.id;
-
-    const checkbox = useRef();
-
-    const click = () => {
-        checkbox.current.checked = true;
-        props.onChange();
-    }
-
+export default function Checkbox({ small, onClick, children, ...props }) {
     return (
-        <div className="w-100 d-flex align-center checkbox-margin" onClick={click}>
-            <input id={id} name={props.name} type="radio" className="checkbox" ref={checkbox}></input>
-            <label htmlFor={id} className="c-label">{props.children}</label>
+        <div className="d-flex align-center checkbox-margin" onClick={onClick}>
+            <label className={`flex-content-center w-100 ${small ? "c-small" : ""}`}>
+                <input {...props} type="checkbox" className="checkbox"></input>
+                <p className="checkbox-p">{children}</p>
+            </label>
         </div>
     )
 }

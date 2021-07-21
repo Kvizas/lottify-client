@@ -1,13 +1,13 @@
 @import '../../index';
 
 .auth-modal {
-    height: 55vh;
+    min-height: 55vh;
     width: 40vw;
     background-color: #fff;
 }
 
 .auth-top {
-    height: 30%;
+    min-height: 20vh;
     width: 100%;
     background-color: #000;
     display: flex;
@@ -33,7 +33,7 @@
 
 .auth-content {
     height: 70%;
-    padding: 0 30%;
+    padding: 3% 30%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,10 +76,6 @@
 
     .auth-top p {
         font-size: .8rem;
-    }
-
-    .auth-top {
-        padding: 12% 0;
     }
 
     .auth-content {

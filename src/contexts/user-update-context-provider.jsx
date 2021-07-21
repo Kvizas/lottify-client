@@ -12,7 +12,6 @@ export default function UserUpdateContextProvider({ children }) {
 
     const forceUpdate = () => {
         getData(API_URL + "/users/me").then(resp => {
-            console.log(resp);
             setUser(resp)
         }).catch(() => {
             console.log("Failed to fetch userdata.")

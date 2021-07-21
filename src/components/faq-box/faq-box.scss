@@ -5,7 +5,6 @@
     margin: 3% 0;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
     white-space: pre-line;
 }
 
@@ -14,9 +13,10 @@
     margin: 0 20px;
 }
 
-.faq-box h4 {
-    margin: 0;
+.faq-title {
     cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .faq-box p {
