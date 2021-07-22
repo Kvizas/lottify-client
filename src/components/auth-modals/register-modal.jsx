@@ -68,6 +68,7 @@ export default function RegisterModal(props) {
                 setError(resp.data[0].messages[0].message);
             }
             else {
+                console.log(resp);
                 setSentToEmail(email.current);
             }
         }).catch(() => {

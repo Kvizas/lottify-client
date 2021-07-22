@@ -17,6 +17,7 @@ import { API_URL } from '../../settings'
 import { fixPrice } from '../../utilities/prices'
 import postData from '../../requests/post-data'
 import Success from "../../components/success/success";
+import UserUpdateContextProvider from '../../contexts/user-update-context-provider'
 
 
 export default function Checkout({ props }) {
@@ -103,9 +104,9 @@ export default function Checkout({ props }) {
                         user ?
                             <>
                                 <h4>Select your billing address</h4>
-                                <QueryClientProvider client={new QueryClient()}>
+                                <UserUpdateContextProvider>
                                     <AddressList onSelect={address => setAddress(address)} onAdding={val => setAddingAddress(val)} />
-                                </QueryClientProvider>
+                                </UserUpdateContextProvider>
                             </>
                             :
                             <GuestAddress onSuccess={(address) => {
