@@ -34,11 +34,7 @@ export default function Profile() {
                     nav === "Dashboard" ?
                         <>
                             <h3 className="profile-dash-h" style={{ paddingTop: "12px" }}>Hello, {user.username}</h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                                magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-                                et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-                                no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                            <p>This is your account dashboard! Here you will be able to track your ticket purchases, edit account information and add your billing address.</p>
                         </>
                         :
                         nav === "Account" ?
