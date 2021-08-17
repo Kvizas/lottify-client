@@ -6,9 +6,9 @@ import WordMark from "../wordmark/WordMark";
 import "./Navbar.scss";
 
 import { ReactComponent as Facebook } from "../../assets/socialmedia/facebook.svg";
-import { ReactComponent as WhatsApp } from "../../assets/socialmedia/whatsapp.svg";
+import { ReactComponent as Instagram } from "../../assets/socialmedia/instagram.svg";
 import { ReactComponent as YouTube } from "../../assets/socialmedia/youtube.svg";
-import { ReactComponent as Messenger } from "../../assets/socialmedia/messenger.svg";
+// import { ReactComponent as Messenger } from "../../assets/socialmedia/messenger.svg";
 
 import { ReactComponent as LoginSvg } from "./login.svg";
 import { ReactComponent as LogoutSvg } from "./logout.svg";
@@ -94,10 +94,10 @@ export default function Navbar() {
                     <NavLink to="/contact-us" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">Contact us</NavLink>
                 </div>
                 <div className="nav-modal-footer">
-                    <a className="w-100 flex-content-center" href="https://facebook.com/"><Facebook className="nav-media-icon"></Facebook></a>
-                    <a className="w-100 flex-content-center" href="https://facebook.com/"><WhatsApp className="nav-media-icon"></WhatsApp></a>
-                    <a className="w-100 flex-content-center" href="https://facebook.com/"><YouTube className="nav-media-icon"></YouTube></a>
-                    <a className="w-100 flex-content-center" href="https://facebook.com/"><Messenger className="nav-media-icon"></Messenger></a>
+                    <a className="w-100 flex-content-center" href="https://www.facebook.com/lottifycomps/"><Facebook className="nav-media-icon"></Facebook></a>
+                    <a className="w-100 flex-content-center" href="https://www.instagram.com/lottifycomps/"><Instagram className="nav-media-icon"></Instagram></a>
+                    <a className="w-100 flex-content-center" href="https://youtube.com/channel/UCFgA9hjlCI0SB4b6YnIycrA"><YouTube className="nav-media-icon"></YouTube></a>
+                    {/* <a className="w-100 flex-content-center" href="https://facebook.com/"><Messenger className="nav-media-icon"></Messenger></a> */}
                 </div>
             </div>
             <div className="navbar-background">

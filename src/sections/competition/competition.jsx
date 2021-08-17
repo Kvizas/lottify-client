@@ -43,6 +43,7 @@ export default function Competition(props) {
 
     const addToCart = () => {
         const existing = cart.products.find(prod => prod.compId === compid && prod.answer === answer);
+
         if (existing) {
             const products = [...cart.products];
             products[products.indexOf(existing)].quantity += tickets;
@@ -57,11 +58,17 @@ export default function Competition(props) {
             })
     }
 
+
     if (isLoading) return <section className="section justify-left"><Loader></Loader></section>
     if (error) return <section className="section justify-left"><DBError></DBError></section>
 
     const compData = data[0];
     const faqData = data[1];
+
+    const canAddToCart = () => {
+        const sum = (a, b) => a + b;
+        return cart.products.filter(prod => prod.compId === compid).map(prod => prod.quantity).reduce(sum, 0) + tickets > compData.AvailableTickets;
+    }
 
     return (
         <section className="section justify-left comp-overlow-hidden">
@@ -118,10 +125,9 @@ export default function Competition(props) {
                                             </div>
                                             <div className="w-25 d-flex f-wrap align-end justify-end comp-m-buy comp-m-to-cart">
                                                 <h4 className="comp-total">Total: <span style={{ color: "#E05955" }}>£{fixPrice(tickets * compData.Price)}</span></h4>
-                                                <Button onClick={addToCart} short={true}>Add to cart</Button>
+                                                <Button onClick={addToCart} disabled={canAddToCart()} short={true}>Add to cart</Button>
                                             </div>
                                         </div>}
-
                             <br />
                             <FAQBox title="Prize details">{compData.Details}</FAQBox>
                             {faqData.faqs.map((faq, i) => <FAQBox key={i} title={faq.Question}>{faq.Answer}</FAQBox>)}

@@ -52,33 +52,6 @@ h4 {
     display: none;
 }
 
-@media(max-width: 1100px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    .mobile-text-center {
-        text-align: center;
-    }
-
-    .m-w-100 {
-        width: 100%!important;
-    }
-
-    .m-hidden {
-        display: none!important;
-    }
-
-    .d-hidden {
-        display: block;
-    }
-
-    .mobile-section-h {
-            margin-top: 36px;
-            text-align: center;
-            font-size: 1.8rem;
-    }
-}
 
 html {
     font-family: 'Montserrat';
@@ -215,4 +188,39 @@ html {
 .cookie-consent a,
 .cookie-consent a:visited {
     color: $red-color
+}
+
+@media(max-width: 1100px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .mobile-text-center {
+        text-align: center;
+    }
+    .mobile-text-left {
+        text-align: left;
+    }
+
+    .mobile-flex-reverse {
+        flex-direction: column-reverse;
+    }
+
+    .m-w-100 {
+        width: 100%!important;
+    }
+
+    .m-hidden {
+        display: none!important;
+    }
+
+    .d-hidden {
+        display: block;
+    }
+
+    .mobile-section-h {
+            margin-top: 36px;
+            text-align: center;
+            font-size: 1.8rem;
+    }
 }

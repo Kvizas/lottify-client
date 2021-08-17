@@ -32,7 +32,7 @@ export default function CompetitionBox(props) {
                     <div className="w-2-3rd">
                         <div className="w-100">
                             <p>Price value: £{comp.Value}</p>
-                            <p>Competition ends on: {moment(comp.Deadline.Deadline).format("MMMM Do")}</p>
+                            <p>Competition ends on: <span className="no-break">{moment(comp.Deadline.Deadline).format("MMMM Do")}</span></p>
                         </div>
                     </div>
                     <div className="w-3rd d-flex justify-end">

@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 
 import { ReactComponent as Facebook } from "../../assets/socialmedia/facebook.svg";
-import { ReactComponent as WhatsApp } from "../../assets/socialmedia/whatsapp.svg";
+import { ReactComponent as Instagram } from "../../assets/socialmedia/instagram.svg";
 import { ReactComponent as YouTube } from "../../assets/socialmedia/youtube.svg";
-import { ReactComponent as Messenger } from "../../assets/socialmedia/messenger.svg";
+// import { ReactComponent as Messenger } from "../../assets/socialmedia/messenger.svg";
 
 import "./footer.scss";
 
@@ -26,10 +26,10 @@ export default function Footer(props) {
                             <WordMark></WordMark>
                             <p>We create experiences</p>
                             <div className="footer-medias">
-                                <a className="footer-media" href="https://facebook.com/"><Facebook></Facebook></a>
-                                <a className="footer-media" href="https://facebook.com/"><WhatsApp></WhatsApp></a>
-                                <a className="footer-media" href="https://facebook.com/"><YouTube></YouTube></a>
-                                <a className="footer-media" href="https://facebook.com/"><Messenger></Messenger></a>
+                                <a className="footer-media" href="https://www.facebook.com/lottifycomps/"><Facebook></Facebook></a>
+                                <a className="footer-media" href="https://www.instagram.com/lottifycomps/"><Instagram></Instagram></a>
+                                <a className="footer-media" href="https://youtube.com/channel/UCFgA9hjlCI0SB4b6YnIycrA"><YouTube></YouTube></a>
+                                {/* <a className="footer-media" href="https://facebook.com/"><Messenger></Messenger></a> */}
                             </div>
                         </div>
                         <div className="footer-w-3rd d-flex justify-space-between f-wrap">
