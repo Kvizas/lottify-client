@@ -5,7 +5,7 @@ export default function CardDetails({ jwt }) {
 
     useEffect(() => {
         /* global SecureTrading*/
-        var st = SecureTrading({ jwt });
+        var st = SecureTrading({ jwt, livestatus: 0 });
 
         st.Components();
         return () => {
