@@ -1,5 +1,6 @@
 import React from 'react'
 import WordMark from '../wordmark/WordMark';
+import moment from "moment";
 
 import { NavLink } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
@@ -43,7 +44,7 @@ export default function Footer(props) {
                             </div>
                             <div className="footer-nc-break footer-contacts footer-media-margin">
                                 <h3>Contact us</h3>
-                                <p>Support number: +44 7778 823</p>
+                                {/* <p>Support number: +44 7778 823</p> */}
                                 <p>Email: support@lottify.co.uk</p>
                             </div>
                         </div>
@@ -51,7 +52,7 @@ export default function Footer(props) {
                 </div>
                 <div className="footer-bot">
                     <div className="footer-copyright">
-                        Copyright © Lottify 2020. All rights reserved
+                        Copyright © Lottify 2020 - {moment().format("YYYY")}. All rights reserved
                     </div>
                     <div className="footer-links">
                         <NavLink to="/terms" className="footer-link">Terms & Contitions</NavLink>

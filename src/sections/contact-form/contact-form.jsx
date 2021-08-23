@@ -75,9 +75,9 @@ export default function ContactForm() {
                     <>
                         <h2 className="w-100" style={{ marginTop: "84px" }}>Contact info</h2>
                         <div className="w-100 d-flex align-center justify-space-between f-wrap">
-                            <p className="small-p-margin no-margin m-w-100">
+                            {/* <p className="small-p-margin no-margin m-w-100">
                                 <b>Support number:</b> <span className="no-break">+44 924 569 100</span>
-                            </p>
+                            </p> */}
                             <p className="small-p-margin no-margin m-w-100">
                                 <b>E-mail:</b> support@lottify.co.uk
                             </p>

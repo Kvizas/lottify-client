@@ -5,7 +5,7 @@ export default function CardDetails({ jwt }) {
 
     useEffect(() => {
         /* global SecureTrading*/
-        var st = SecureTrading({ jwt, livestatus: 0 });
+        var st = SecureTrading({ jwt, livestatus: 1 });
 
         st.Components();
         return () => {
@@ -19,6 +19,7 @@ export default function CardDetails({ jwt }) {
 
         function handlePay() {
             payButton.current.click();
+            console.log(jwt);
         }
 
         document.addEventListener("payment:submit", handlePay);
