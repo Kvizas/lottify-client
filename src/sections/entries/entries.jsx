@@ -1,6 +1,5 @@
-import React, { useContext, useMemo, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
-import { UserContext } from '../../contexts/user-context-provider'
 import TextInput from '../../components/text-input/text-input';
 import DropdownInput from '../../components/dropdown-input/dropdown-input';
 import Entry from "../../components/entry/entry";
@@ -15,17 +14,15 @@ import FilterSVG from "./filter.svg";
 import "./entries.scss";
 import { useQuery } from 'react-query';
 
-export default function Entries() {
+export default function Entries({ orders }) {
 
-    const { user } = useContext(UserContext)
-
-    const relevantOrders = user.Orders.filter(order => order.Tickets);
+    const relevantOrders = orders.filter(order => order.Tickets);
 
     const getTicketKey = (ticket) => {
         return `${ticket.Competition};${ticket.Answer}`
     }
 
-    const groupTickets = useMemo(() => {
+    const groupTickets = useCallback(() => {
 
         var groupedTickets = {};
 
@@ -40,11 +37,11 @@ export default function Entries() {
         return Object.values(groupedTickets);
     }, [relevantOrders])
 
-    const [entries, setEntries] = useState(groupTickets)
+    const [entries, setEntries] = useState(groupTickets())
 
     const { isLoading, error, data } = useQuery('cart-comps',
         () => getData(API_URL + '/competitions?id_in=' +
-            groupTickets.map(tg => tg[0].Competition).join("&id_in=")
+            groupTickets().map(tg => tg[0].Competition).join("&id_in=")
         )
     );
 
@@ -54,9 +51,9 @@ export default function Entries() {
 
     const querySearch = value => {
         setEntries(value ?
-            groupTickets.filter(tg => getTicketGroupComp(tg).Title.toUpperCase().includes(value.toUpperCase()))
+            groupTickets().filter(tg => getTicketGroupComp(tg).Title.toUpperCase().includes(value.toUpperCase()))
             :
-            groupTickets)
+            groupTickets())
     }
 
     const sort = by => {

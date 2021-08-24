@@ -8,6 +8,7 @@ import { checkEmail, checkName, checkPhone } from '../../utilities/input-checks'
 export default function GuestAddress({ onSuccess }) {
 
     const email = useRef();
+    const emailRepeat = useRef();
     const firstName = useRef();
     const lastName = useRef();
     const country = useRef();
@@ -22,6 +23,7 @@ export default function GuestAddress({ onSuccess }) {
         onSuccess();
 
         if (!email.current ||
+            !emailRepeat.current ||
             !firstName.current ||
             !lastName.current ||
             !country.current ||
@@ -31,6 +33,9 @@ export default function GuestAddress({ onSuccess }) {
             !phone.current) {
             return;
         }
+
+        if (email.current !== emailRepeat.current)
+            return setError("Emails do not match!");
 
         const emailCheck = checkEmail(email.current);
         if (emailCheck !== true)
@@ -60,7 +65,8 @@ export default function GuestAddress({ onSuccess }) {
         <form style={{ margin: "auto", width: "70%" }}>
             <h4 style={{ marginBottom: "0" }}>Enter your email</h4>
             <p style={{ marginTop: "6px" }}>As you are not signed in, you will get all of your purchase information and tickets to the email you provide.</p>
-            <TextInput onChange={change} value={email} icon={EmailSVG} placeholder="Email address"></TextInput>
+            <TextInput onChange={change} value={email} icon={EmailSVG} placeholder="Your email address"></TextInput>
+            <TextInput onChange={change} value={emailRepeat} icon={EmailSVG} placeholder="Repeat your email address"></TextInput>
             <h4 style={{ marginBottom: "0" }}>Enter your billing address</h4>
             <p style={{ marginTop: "6px" }}>Or sign in to use your saved addresses</p>
             <TextInput onChange={change} value={firstName} placeholder="First name"></TextInput>

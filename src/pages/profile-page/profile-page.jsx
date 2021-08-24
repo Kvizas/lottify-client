@@ -8,7 +8,7 @@ import UserUpdateContextProvider from '../../contexts/user-update-context-provid
 
 export default function ProfilePage() {
 
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const history = useHistory();
 
     if (!user) {
@@ -16,10 +16,16 @@ export default function ProfilePage() {
         return <></>
     }
 
+    if (user.guest) {
+        setUser(undefined);
+        history.push("/");
+        return <></>
+    }
+
     return (
         <UserUpdateContextProvider>
             <Profile></Profile>
-            <Entries></Entries>
+            <Entries orders={user.Orders}></Entries>
         </UserUpdateContextProvider>
     )
 }

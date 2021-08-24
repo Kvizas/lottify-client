@@ -27,7 +27,7 @@ export default function CardDetails({ jwt }) {
         return () => {
             document.removeEventListener("payment:submit");
         }
-    }, [])
+    }, [jwt])
 
     return (
         <>
