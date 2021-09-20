@@ -22,7 +22,9 @@ export default function CompetitionBox(props) {
         <div className={props.width ? "comp-box comp-wide" : "comp-box"}>
             <PriceTag price={comp.Price}></PriceTag>
             <div className="comp-box-img" style={{ backgroundImage: `url(${API_URL + comp.Images[0].url}` }}>
-                {new Date(comp.Deadline.Deadline) < new Date() ? <div className="comp-img-ended">Competition has ended</div> : ""}
+                {comp.Deadline ? 
+                    (new Date(comp.Deadline.Deadline) < new Date() ? <div className="comp-img-ended">Competition has ended</div> : "")
+                : "No deadline"}
             </div>
             <div className="comp-footer">
                 <div className="comp-text-box">
@@ -32,7 +34,12 @@ export default function CompetitionBox(props) {
                     <div className="w-2-3rd">
                         <div className="w-100">
                             <p>Price value: £{comp.Value}</p>
-                            <p>Competition ends on: <span className="no-break">{moment(comp.Deadline.Deadline).format("MMMM Do")}</span></p>
+                            {
+                                comp.Deadline ?
+                                <p>Competition ends on: <span className="no-break">{moment(comp.Deadline.Deadline).format("MMMM Do")}</span></p>
+                                :
+                                <></>
+                            }
                         </div>
                     </div>
                     <div className="w-3rd d-flex justify-end">
