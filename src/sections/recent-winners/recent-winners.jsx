@@ -34,10 +34,14 @@ export default function RecentWinners() {
                         data.length > 1 ?
                             <Carousel callNextSlideRef={callNextSlideRef} slides={
                                 data.map(obj => {
-                                    return {
-                                        img: obj.Competition.Images[0].url,
-                                        title: <h4 style={{ margin: "20px 0" }} className="w-100 text-center rw-title"><span className="red">WON: </span>{obj.Competition.Title}</h4>,
-                                        content: <Winner {...obj} onControl={callNextSlide}></Winner>
+                                    try {
+                                        return {
+                                            img: obj.Competition.Images[0].url,
+                                            title: <h4 style={{ margin: "20px 0" }} className="w-100 text-center rw-title"><span className="red">WON: </span>{obj.Competition.Title}</h4>,
+                                            content: <Winner {...obj} onControl={callNextSlide}></Winner>
+                                        }
+                                    } catch {
+                                        return;
                                     }
                                 })
                             } />
