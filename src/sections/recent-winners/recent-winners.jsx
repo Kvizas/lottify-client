@@ -43,7 +43,7 @@ export default function RecentWinners() {
                                     } catch {
                                         return;
                                     }
-                                })
+                                }).filter(e => e != undefined)
                             } />
                             :
                             <p className="w-100 text-center">There are <strong>no winners</strong> yet.<br />Participate and be the first!</p>
