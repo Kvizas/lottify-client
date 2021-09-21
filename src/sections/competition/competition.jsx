@@ -20,6 +20,7 @@ import Thumbnail from "../../components/thumbnail/thumbnail";
 import NumberSpinner from '../../components/number-spinner/number-spinner';
 import { fixPrice } from '../../utilities/prices';
 import ImageViewer from '../../components/image-viewer/image-viewer';
+import { CartPopupContext } from '../../contexts/cart-popup-context-provider';
 
 export default function Competition(props) {
 
@@ -30,6 +31,7 @@ export default function Competition(props) {
     const [tickets, setTickets] = useState(1);
 
     const { cart, setCart } = useContext(CartContext)
+    const { setCartPopupActive } = useContext(CartPopupContext);
 
     const iw = useRef({});
     const m_iw = useRef({});
@@ -43,7 +45,8 @@ export default function Competition(props) {
 
     const addToCart = () => {
         const existing = cart.products.find(prod => prod.compId === compid && prod.answer === answer);
-
+        setCartPopupActive(true);
+        
         if (existing) {
             const products = [...cart.products];
             products[products.indexOf(existing)].quantity += tickets;
@@ -53,7 +56,8 @@ export default function Competition(props) {
                 products: [...cart.products, {
                     compId: compid,
                     quantity: tickets,
-                    answer: answer
+                    answer: answer,
+                    compData: data[0]
                 }]
             })
     }

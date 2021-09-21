@@ -16,7 +16,7 @@ export default function CartIcon() {
             <CartSvg></CartSvg>
             {
                 cart.products.length > 0 ?
-                    <div class="badge badge-light">{cart.products.map(prod => prod.quantity).reduce((a, b) => a + b, 0)}</div>
+                    <div className="badge badge-light">{cart.products.map(prod => prod.quantity).reduce((a, b) => a + b, 0)}</div>
                     : ""
             }
         </NavLink>

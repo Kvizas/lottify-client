@@ -18,12 +18,15 @@ import { UserContext } from '../../contexts/user-context-provider';
 import postData from '../../requests/post-data';
 import { API_URL } from '../../settings';
 import CartIcon from '../cart-icon/cart-icon';
+import CartPopup from '../cart-popup/cart-popup';
+import { CartPopupContext } from '../../contexts/cart-popup-context-provider';
 
 export default function Navbar() {
 
     // eslint-disable-next-line
     const [burgerActive, setBurgerActive] = useState(false);
 
+    const { cartPopupActive } = useContext(CartPopupContext);
     const { user, setUser } = useContext(UserContext);
 
     const authModal = useRef({});
@@ -138,8 +141,9 @@ export default function Navbar() {
                                         </div>
                                     </div>
                             }
-                            <div className="nav-item d-flex align-center no-margin">
+                            <div className="nav-item d-flex align-center no-margin relative">
                                 <CartIcon></CartIcon>
+                                <CartPopup show={cartPopupActive}></CartPopup>
                             </div>
                         </div>
                     </div>

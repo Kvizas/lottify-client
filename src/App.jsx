@@ -24,44 +24,47 @@ import ProfilePage from './pages/profile-page/profile-page';
 import ContactPage from './pages/contact-page/contact-page';
 import CookieConsent from "react-cookie-consent";
 import { QueryClientProvider, QueryClient } from 'react-query';
+import CartPopupContextProvider from './contexts/cart-popup-context-provider';
 
 function App() {
   return (
     <div id="root">
       <CartContextProvider>
-        <UserContextProvider>
-          <QueryClientProvider client={new QueryClient()}>
-            <Router>
-              <Footer>
-                <Navbar></Navbar>
-                <Switch>
-                  <Route exact path="/" component={Homepage}></Route>
-                  <Route exact path="/competitions" component={CompetitionsPage}></Route>
-                  <Route
-                    exact
-                    path='/competition/:id'
-                    component={CompetitionPage}
-                  />
-                  <Route exact path="/faq" component={FAQ}></Route>
-                  <Route exact path="/terms" component={TermsPage}></Route>
-                  <Route exact path="/privacy" component={PrivacyPage}></Route>
-                  <Route exact path="/cookies" component={CookiesPage}></Route>
-                  <Route exact path="/password-reset/:code" component={PasswordResetPage}></Route>
-                  <Route exact path="/registration-success" component={RegistrationSuccess}></Route>
-                  <Route exact path="/payment-success" component={PaymentSuccess}></Route>
-                  <Route exact path="/cart" component={CartPage}></Route>
-                  <Route exact path="/checkout" component={CheckoutPage}></Route>
-                  <Route exact path="/profile" component={ProfilePage}></Route>
-                  <Route exact path="/contact-us" component={ContactPage}></Route>
-                  <Route component={NotFound}></Route>
-                </Switch>
-                <CookieConsent buttonClasses="cookie-btn" containerClasses="cookie-consent">
-                  By staying on this website you agree that cookies will be used for a better user experience.
-                  You can see our cookie policy <Link to="/cookies">here</Link></CookieConsent>
-              </Footer>
-            </Router>
-          </QueryClientProvider>
-        </UserContextProvider>
+        <CartPopupContextProvider>
+          <UserContextProvider>
+            <QueryClientProvider client={new QueryClient()}>
+              <Router>
+                <Footer>
+                  <Navbar></Navbar>
+                  <Switch>
+                    <Route exact path="/" component={Homepage}></Route>
+                    <Route exact path="/competitions" component={CompetitionsPage}></Route>
+                    <Route
+                      exact
+                      path='/competition/:id'
+                      component={CompetitionPage}
+                    />
+                    <Route exact path="/faq" component={FAQ}></Route>
+                    <Route exact path="/terms" component={TermsPage}></Route>
+                    <Route exact path="/privacy" component={PrivacyPage}></Route>
+                    <Route exact path="/cookies" component={CookiesPage}></Route>
+                    <Route exact path="/password-reset/:code" component={PasswordResetPage}></Route>
+                    <Route exact path="/registration-success" component={RegistrationSuccess}></Route>
+                    <Route exact path="/payment-success" component={PaymentSuccess}></Route>
+                    <Route exact path="/cart" component={CartPage}></Route>
+                    <Route exact path="/checkout" component={CheckoutPage}></Route>
+                    <Route exact path="/profile" component={ProfilePage}></Route>
+                    <Route exact path="/contact-us" component={ContactPage}></Route>
+                    <Route component={NotFound}></Route>
+                  </Switch>
+                  <CookieConsent buttonClasses="cookie-btn" containerClasses="cookie-consent">
+                    By staying on this website you agree that cookies will be used for a better user experience.
+                    You can see our cookie policy <Link to="/cookies">here</Link></CookieConsent>
+                </Footer>
+              </Router>
+            </QueryClientProvider>
+          </UserContextProvider>
+        </CartPopupContextProvider>
       </CartContextProvider>
     </div>
   );
