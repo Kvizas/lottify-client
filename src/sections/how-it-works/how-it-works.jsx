@@ -31,7 +31,7 @@ export default function HowItWorks() {
                     <img className="hiw-img" src={WinSVG} alt="" />
                     <h3>Win amazing prizes</h3>
                     <p>
-                        We will contact you to congratulate after the competition
+                        We will pick the winners during our live draw on social media
                     </p>
                 </div>
             </div>
