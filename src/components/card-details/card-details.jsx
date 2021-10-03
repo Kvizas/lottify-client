@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react'
+import { FRONT_URL } from '../../settings';
 
 import "./card-details.scss";
 export default function CardDetails({ jwt }) {
@@ -31,7 +32,7 @@ export default function CardDetails({ jwt }) {
 
     return (
         <>
-            <form id="st-form" action="https://dev.lottify.co.uk/payment-success" method="GET">
+            <form id="st-form" action={FRONT_URL + "/payment-success"} method="GET">
                 <div id="st-card-number" className="card-form-field"></div>
                 <div id="st-expiration-date" className="card-form-field"></div>
                 <div id="st-security-code" className="card-form-field"></div>
