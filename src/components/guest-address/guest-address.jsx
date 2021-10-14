@@ -66,7 +66,7 @@ export default function GuestAddress({ onSuccess }) {
             <h4 style={{ marginBottom: "0" }}>Enter your email</h4>
             <p style={{ marginTop: "6px" }}>As you are not signed in, you will get all of your purchase information and tickets to the email you provide.</p>
             <TextInput onChange={change} value={email} icon={EmailSVG} placeholder="Your email address"></TextInput>
-            <TextInput onChange={change} value={emailRepeat} icon={EmailSVG} placeholder="Repeat your email address"></TextInput>
+            <TextInput onChange={change} value={emailRepeat} icon={EmailSVG} placeholder="Repeat the email"></TextInput>
             <h4 style={{ marginBottom: "0" }}>Enter your billing address</h4>
             <p style={{ marginTop: "6px" }}>Or sign in to use your saved addresses</p>
             <TextInput onChange={change} value={firstName} placeholder="First name"></TextInput>

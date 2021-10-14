@@ -31,19 +31,15 @@ export default function RecentWinners() {
                     error ?
                         <DBError />
                         :
-                        data.length > 1 ?
+                        data.length >= 1 ?
                             <Carousel callNextSlideRef={callNextSlideRef} slides={
                                 data.map(obj => {
-                                    try {
-                                        return {
-                                            img: obj.Competition.Images[0].url,
-                                            title: <h4 style={{ margin: "20px 0" }} className="w-100 text-center rw-title"><span className="red">WON: </span>{obj.Competition.Title}</h4>,
-                                            content: <Winner {...obj} onControl={callNextSlide}></Winner>
-                                        }
-                                    } catch {
-                                        return;
+                                    return {
+                                        img: (obj.Competition && obj.Competition.Images[0].url) || "",
+                                        title: <h4 style={{ margin: "20px 0" }} className="w-100 text-center rw-title"><span className="red">WON: </span>{(obj.Competition && obj.Competition.Title) || "Competition not found"}</h4>,
+                                        content: <Winner {...obj} onControl={callNextSlide}></Winner>
                                     }
-                                }).filter(e => e != undefined)
+                                }).filter(e => e !== undefined)
                             } />
                             :
                             <p className="w-100 text-center">There are <strong>no winners</strong> yet.<br />Participate and be the first!</p>

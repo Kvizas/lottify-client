@@ -83,18 +83,18 @@ export default function Navbar() {
                                 </div>
                                 Log in/Sign up
                             </div>
-                            <NavLink to="/cart" className="nav-item nav-item-inmodal d-flex align-center no-break" activeClassName="nav-item-active">
-                                    <div className="nav-icon"><CartIcon></CartIcon></div>
-                                    Cart
-                            </NavLink>
+                            <div className="nav-item nav-item-inmodal d-flex align-center no-break">
+                                <div className="nav-icon"><CartIcon></CartIcon></div>
+                                Cart
+                            </div>
                         </>
                     }
                     
-                    <NavHashLink to="/#aboutus" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">About us</NavHashLink>
-                    <NavHashLink to="/#how-it-works" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">How it works</NavHashLink>
-                    <NavLink to="/competitions" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">Competitions</NavLink>
-                    <NavLink to="/faq" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">FAQ</NavLink>
-                    <NavLink to="/contact-us" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">Contact us</NavLink>
+                    <NavHashLink onClick={e => clickOnBurger(e, true)} to="/#aboutus" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">About us</NavHashLink>
+                    <NavHashLink onClick={e => clickOnBurger(e, true)} to="/#how-it-works" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">How it works</NavHashLink>
+                    <NavLink onClick={e => clickOnBurger(e, true)} to="/competitions" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">Competitions</NavLink>
+                    <NavLink onClick={e => clickOnBurger(e, true)} to="/faq" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">FAQ</NavLink>
+                    <NavLink onClick={e => clickOnBurger(e, true)} to="/contact-us" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">Contact us</NavLink>
                 </div>
                 <div className="nav-modal-footer">
                     <a className="w-100 flex-content-center" href="https://www.facebook.com/lottifycomps/"><Facebook className="nav-media-icon"></Facebook></a>

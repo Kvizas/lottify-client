@@ -41,7 +41,7 @@ export default function CartPopup({show}) {
             <div className="cart-pop-content">
                 {cart.products.map((prod, i) => {
                     return <><CartPopupItem product={prod} key={prod.compId + prod.answer}></CartPopupItem>
-                    {i != cart.products.length - 1 ? <div className="cart-pop-spacer"></div> : <></>}</>
+                    {i !== cart.products.length - 1 ? <div className="cart-pop-spacer"></div> : <></>}</>
                 })}
             </div>
             <div className="subtotal">
