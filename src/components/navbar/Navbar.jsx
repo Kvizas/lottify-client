@@ -90,9 +90,9 @@ export default function Navbar() {
                         </>
                     }
                     
-                    <NavHashLink onClick={e => clickOnBurger(e, true)} to="/#aboutus" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">About us</NavHashLink>
-                    <NavHashLink onClick={e => clickOnBurger(e, true)} to="/#how-it-works" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">How it works</NavHashLink>
                     <NavLink onClick={e => clickOnBurger(e, true)} to="/competitions" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">Competitions</NavLink>
+                    <NavHashLink onClick={e => clickOnBurger(e, true)} to="/#how-it-works" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">How it works</NavHashLink>
+                    <NavHashLink onClick={e => clickOnBurger(e, true)} to="/#aboutus" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">About us</NavHashLink>
                     <NavLink onClick={e => clickOnBurger(e, true)} to="/faq" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">FAQ</NavLink>
                     <NavLink onClick={e => clickOnBurger(e, true)} to="/contact-us" className="nav-item nav-item-inmodal d-block" activeClassName="nav-item-active">Contact us</NavLink>
                 </div>
@@ -115,9 +115,9 @@ export default function Navbar() {
                     </div>
                     <div className="nav-outside-burger">
                         <div className="navigation">
-                            <NavHashLink to="/#aboutus" className="nav-item" activeClassName="nav-item-active">About us</NavHashLink>
-                            <NavHashLink to="/#how-it-works" className="nav-item" activeClassName="nav-item-active">How it works</NavHashLink>
                             <NavLink to="/competitions" className="nav-item" activeClassName="nav-item-active">Competitions</NavLink>
+                            <NavHashLink to="/#how-it-works" className="nav-item" activeClassName="nav-item-active">How it works</NavHashLink>
+                            <NavHashLink to="/#aboutus" className="nav-item" activeClassName="nav-item-active">About us</NavHashLink>
                             <NavLink to="/faq" className="nav-item" activeClassName="nav-item-active">FAQ</NavLink>
                             <NavLink to="/contact-us" className="nav-item" activeClassName="nav-item-active">Contact us</NavLink>
                         </div>
