@@ -29,7 +29,7 @@ export default function Competitions(props) {
     }, [])
 
     useEffect(() => {
-        getData(API_URL + "/competitions" + (limit !== undefined ? `?_limit=${limit}` : `?_start=${currentPage * compsPerPage}&_limit=${compsPerPage}`) + "&_sort=created_at:DESC")
+        getData(API_URL + "/competitions" + (limit !== undefined ? `?_limit=${limit}` : `?_start=${currentPage * compsPerPage}&_limit=${compsPerPage}`) + "&_sort=deadline:ASC,created_at:DESC")
             .then(d => { setData(d); setLoading(false); })
             .catch(() => { setError(true); setLoading(false); });
     }, [currentPage, limit])
