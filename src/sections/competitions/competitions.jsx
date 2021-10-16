@@ -51,7 +51,7 @@ export default function Competitions(props) {
                     <Loader></Loader> :
                     error ?
                         <DBError></DBError> :
-                        data.length < 1 ?
+                        data.length < 1 || !Array.isArray(data) ?
                             (<div className="w-100 text-center">
                                 <h2>Currently there are <u>no competitions</u>.</h2>
                             </div>)

@@ -14,6 +14,7 @@ export default function FAQBox(props) {
     const arrow = useRef();
 
     const expand = () => {
+        console.log("Ok", locked)
         if (locked) return;
         if (expanded) {
             para.current.style.opacity = "0";
@@ -38,7 +39,7 @@ export default function FAQBox(props) {
         <div className="faq-box">
             <div className="faq-content">
                 <p className="faq-title" onClick={expand}>{props.title}</p>
-                <p style={{ opacity: "0", maxHeight: "0" }} ref={para}>{props.children}</p>
+                <p style={{ opacity: "0", maxHeight: "0", pointerEvents: "none" }} ref={para}>{props.children}</p>
             </div>
             <Arrow className="faq-arrow" ref={arrow} onClick={expand}></Arrow>
         </div>
