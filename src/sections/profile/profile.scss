@@ -7,7 +7,8 @@
 .profile-nav-btn {
     position: absolute;
     top: -34px;
-    width: 85%;
+    max-width: 85%;
+    min-width: 60%;
 }
 
 .profile-h-margin {
@@ -23,11 +24,16 @@
 
 
 @media(max-width: 1300px) {
-    .profile-floating-nav {
-        top: -40px;
-    }
 
     .profile-nav-btn {
-        min-width: 160px;
+        white-space: nowrap;
+        padding-left: 10px;
+        padding-right: 10px;
+        min-width: 100px;
+
+        .btn-text {
+            margin: auto;
+            width: fit-content;
+        }
     }
 }

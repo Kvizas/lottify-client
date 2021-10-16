@@ -5,8 +5,9 @@ import { API_URL } from '../../settings';
 import "./address-card.scss";
 
 import DeleteSVG from "./trash-can.svg";
+import EditSVG from "./edit.svg";
 
-export default function AddressCard({ data, onSelect, selected, editable, refetch }) {
+export default function AddressCard({ data, onSelect, selected, editable, refetch, onEdit }) {
 
     const remove = () => {
         postData(API_URL + "/users/delete-address", {
@@ -24,9 +25,14 @@ export default function AddressCard({ data, onSelect, selected, editable, refetc
                     <div className="d-flex w-100">
                         {
                             editable ?
-                                <div className="address-card-del" onClick={remove}>
-                                    <img className="address-card-del-icon" src={DeleteSVG} alt=""></img>
-                                </div>
+                                <>
+                                    <div className="address-card-del address-card-edit" onClick={onEdit}>
+                                        <img className="address-card-del-icon" src={EditSVG} alt=""></img>
+                                    </div>
+                                    <div className="address-card-del" onClick={remove}>
+                                        <img className="address-card-del-icon" src={DeleteSVG} alt=""></img>
+                                    </div>
+                                </>
                                 :
                                 <></>
                         }

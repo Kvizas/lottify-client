@@ -75,6 +75,26 @@
     cursor: pointer;
 }
 
+
+
+.address-card-del {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    background-color: #d18885;
+    transition: background-color 200ms;
+    padding: 4px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.address-card-edit {
+    right: 30px;
+}
+
 .address-card-del:hover {
     background-color: #e05955;
 }

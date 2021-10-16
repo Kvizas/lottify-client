@@ -7,6 +7,7 @@ import AddressList from '../../components/address-list/address-list'
 import AccountDetails from '../../components/account-details/account-details'
 
 import "./profile.scss"
+import Entries from '../entries/entries'
 
 export default function Profile() {
 
@@ -17,16 +18,13 @@ export default function Profile() {
     return (
         <section className="section">
             <h2 className="mobile-section-h profile-h-margin">My account</h2>
-            <ContentCard hidden={nav !== "Dashboard"}>
+            <ContentCard>
                 <div className="w-100 d-flex" style={{ paddingBottom: "24px" }}>
-                    <div className="w-3rd profile-nav profile-floating-nav">
+                    <div className="w-50 profile-nav">
                         <Button className="profile-nav-btn" black={nav !== "Dashboard"} onClick={() => setNav("Dashboard")}>Dashboard</Button>
                     </div>
-                    <div className="w-3rd profile-nav">
+                    <div className="w-50 profile-nav">
                         <Button className="profile-nav-btn" black={nav !== "Account"} onClick={() => setNav("Account")}>Account details</Button>
-                    </div>
-                    <div className="w-3rd profile-nav profile-floating-nav">
-                        <Button className="profile-nav-btn" black={nav !== "Addresses"} onClick={() => setNav("Addresses")}>Addresses</Button>
                     </div>
                 </div>
 
@@ -35,15 +33,16 @@ export default function Profile() {
                         <>
                             <h3 className="profile-dash-h" style={{ paddingTop: "12px" }}>Hello, {user.username}</h3>
                             <p>This is your account dashboard! Here you will be able to track your ticket purchases, edit account information and add your billing address.</p>
+                            <Entries orders={user.Orders}></Entries>
                         </>
                         :
                         nav === "Account" ?
-                            <AccountDetails />
-                            :
-                            nav === "Addresses" ?
+                            <>
+                                <AccountDetails />
                                 <AddressList editable={true} />
-                                :
-                                <> </>
+                            </>
+                            :
+                            <> </>
                 }
 
             </ContentCard>

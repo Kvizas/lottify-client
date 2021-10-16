@@ -66,8 +66,8 @@ export default function Navbar() {
                     {
                         user ?
                         <div className="nav-item nav-item-inmodal d-flex align-center">
-                            <NavLink className="nav-icon" to="/profile"><ProfileSvg/></NavLink>
-                            <div className="nav-icon"><CartIcon/></div>
+                            <NavLink onClick={e => clickOnBurger(e, true)} className="nav-icon" to="/profile"><ProfileSvg/></NavLink>
+                            <div onClick={e => clickOnBurger(e, true)} className="nav-icon"><CartIcon/></div>
                             <div className="nav-icon" onClick={logout}><LogoutSvg/></div>
                         </div>
                         :

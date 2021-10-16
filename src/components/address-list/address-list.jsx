@@ -11,6 +11,7 @@ export default function AddressList({ onSelect, editable, onAdding }) {
 
     const [selected, setSelected] = useState()
     const [addingNew, setAddingNew] = useState()
+    const [editing, setEditing] = useState()
 
     const select = (address, i) => {
         setSelected(i);
@@ -37,7 +38,20 @@ export default function AddressList({ onSelect, editable, onAdding }) {
                     }}
                 />
                 :
+                editing ?
+                <AddressNew
+                    editing={editing}
+                    onCancel={() => {
+                        setEditing(false);
+                    }}
+                    onSuccess={() => {
+                        forceUpdate();
+                        setEditing(false);
+                    }}
+                />
+                :
                 <>
+                    <h4 className="w-100">Addresses & Contact information</h4>
                     {user.Address.map((address, i) =>
                         <AddressCard
                             refetch={forceUpdate}
@@ -45,6 +59,7 @@ export default function AddressList({ onSelect, editable, onAdding }) {
                             data={address}
                             onSelect={onSelect ? address => select(address, i) : undefined}
                             selected={selected === i}
+                            onEdit={() => setEditing(address)}
                             key={i}
                         />
                     )}

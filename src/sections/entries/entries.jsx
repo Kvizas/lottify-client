@@ -89,8 +89,8 @@ export default function Entries({ orders }) {
     }
 
     return (
-        <section className="section" style={{ overflow: "hidden" }}>
-            <h2 className="w-100 text-center">Your competition entries</h2>
+        <section style={{ overflow: "hidden" }}>
+            <h3 className="w-100 text-center profile-dash-h">Your competition entries</h3>
             {
                 relevantOrders.length < 1 ?
                     <p className="text-center">Once you enter a competition your tickets will appear here.<br /> Good luck!</p>
@@ -115,7 +115,7 @@ export default function Entries({ orders }) {
                                             onSelect={sort} />
                                     </div>
                                     {
-                                        entries.map((tg, i) =>
+                                        entries.map((tg) =>
                                             <Entry
                                                 comp={getTicketGroupComp(tg)}
                                                 tickets={tg}

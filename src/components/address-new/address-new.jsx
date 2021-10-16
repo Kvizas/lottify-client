@@ -11,7 +11,7 @@ import "./address-new.scss";
 
 import { checkName, checkPhone } from '../../utilities/input-checks'
 
-export default function AddressNew({ onCancel, onSuccess }) {
+export default function AddressNew({ onCancel, onSuccess, editing = false }) {
 
     const [error, setError] = useState()
 
@@ -45,8 +45,21 @@ export default function AddressNew({ onCancel, onSuccess }) {
             return;
         }
 
-        postData(API_URL + "/users/add-address", {
+        const endpoint = editing ? "/users/edit-address" : "/users/add-address";
+        const address = {
+            FirstName: firstName.current,
+            LastName: lastName.current,
+            Country: country.current,
+            StreetAddress: streetAddress.current,
+            City: city.current,
+            PostCode: postcode.current,
+            Phone: phone.current
+        }
+        if (editing) address.id = editing.id;
+
+        postData(API_URL + endpoint, {
             address: {
+                id: (editing && editing.id) || undefined,
                 FirstName: firstName.current,
                 LastName: lastName.current,
                 Country: country.current,
@@ -70,18 +83,18 @@ export default function AddressNew({ onCancel, onSuccess }) {
 
     return (
         <form className="address-new">
-            <h4>Adding new address</h4>
-            <TextInput value={firstName} placeholder="First name"></TextInput>
-            <TextInput value={lastName} placeholder="Last name"></TextInput>
-            <CountryInput onChange={value => country.current = value} placeholder="Country"></CountryInput>
-            <TextInput value={streetAddress} placeholder="Street Address"></TextInput>
-            <TextInput value={city} placeholder="Town / City"></TextInput>
-            <TextInput value={postcode} placeholder="Postcode"></TextInput>
-            <TextInput value={phone} placeholder="Phone number"></TextInput>
+            <h4>{editing ? "Editing" : "Adding new"} address</h4>
+            <TextInput default={editing ? editing.FirstName : null} value={firstName} placeholder="First name"></TextInput>
+            <TextInput default={editing ? editing.LastName : null} value={lastName} placeholder="Last name"></TextInput>
+            <CountryInput default={editing ? editing.Country : null} onChange={value => country.current = value} placeholder="Country"></CountryInput>
+            <TextInput default={editing ? editing.StreetAddress : null} value={streetAddress} placeholder="Street Address"></TextInput>
+            <TextInput default={editing ? editing.City : null} value={city} placeholder="Town / City"></TextInput>
+            <TextInput default={editing ? editing.PostCode : null} value={postcode} placeholder="Postcode"></TextInput>
+            <TextInput default={editing ? editing.Phone : null} value={phone} placeholder="Phone number"></TextInput>
             <p className="red">{error}</p>
             <div className="w-100 d-flex justify-space-between">
                 <Button className="address-new-btn" onClick={onCancel} black={true}>Go back</Button>
-                <Button className="address-new-btn" onClick={add}>Add</Button>
+                <Button className="address-new-btn" onClick={add}>{editing ? "Update" : "Add"}</Button>
             </div>
         </form>
     )

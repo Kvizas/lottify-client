@@ -16,7 +16,7 @@ import "./account-details.scss"
 
 export default function AccountDetails() {
 
-    const { setUser } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
 
     const email = useRef({})
 
@@ -79,7 +79,7 @@ export default function AccountDetails() {
     return (
         <>
             <h4>Change your email</h4>
-            <TextInput value={email} iconStyle={{ width: "14px" }} icon={EmailSVG} placeholder="Enter your new email address"></TextInput>
+            <TextInput default={user.email} value={email} iconStyle={{ width: "14px" }} icon={EmailSVG} placeholder="Enter your new email address"></TextInput>
             <div className="w-100 d-flex justify-space-between">
                 <p className={`account-details-subtitle red`}>{emailError}</p>
                 <Button onClick={changeEmail} disabled={emailSuccess} green={emailSuccess}>{emailSuccess ? "Changed." : "Save changes"}</Button>

@@ -6,7 +6,7 @@ import { CountryDropdown } from 'react-country-region-selector';
 
 export default function CountryInput(props) {
 
-    const [value, setValue] = useState();
+    const [value, setValue] = useState(props.default || null);
 
     return (
         <div className={`text-input ${props.className}`}>
