@@ -15,13 +15,13 @@ export default function AddressNew({ onCancel, onSuccess, editing = false }) {
 
     const [error, setError] = useState()
 
-    const firstName = useRef();
-    const lastName = useRef();
-    const country = useRef();
-    const streetAddress = useRef();
-    const city = useRef();
-    const postcode = useRef();
-    const phone = useRef();
+    const firstName = useRef(editing ? editing.FirstName : undefined);
+    const lastName = useRef(editing ? editing.LastName : undefined);
+    const country = useRef(editing ? editing.Country : undefined);
+    const streetAddress = useRef(editing ? editing.StreetAddress : undefined);
+    const city = useRef(editing ? editing.City : undefined);
+    const postcode = useRef(editing ? editing.PostCode : undefined);
+    const phone = useRef(editing ? editing.Phone : undefined);
 
     const add = () => {
 
