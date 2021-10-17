@@ -40,13 +40,14 @@ export default function CartPopup({show}) {
             <h3 style={{marginTop: "0"}}>MY BAG, <span>{cart.products.length} item</span></h3>
             <div className="cart-pop-content">
                 {cart.products.map((prod, i) => {
-                    return <><CartPopupItem product={prod} key={prod.compId + prod.answer}></CartPopupItem>
-                    {i !== cart.products.length - 1 ? <div className="cart-pop-spacer"></div> : <></>}</>
+                    const key = prod.compId + prod.answer;
+                    return <><CartPopupItem product={prod} key={key}></CartPopupItem>
+                    {i !== cart.products.length - 1 ? <div key={"div" + key} className="cart-pop-spacer"></div> : <></>}</>
                 })}
             </div>
             <div className="subtotal">
                 <h3>Subtotal:</h3>
-                <h3>£{fixPrice(cart.products.map(prod => prod.compData.Price).reduce((a, b) => a + b))}</h3>
+                <h3>£{fixPrice(cart.products.map(prod => prod.compData.Price).reduce((a, b) => a + b, 0))}</h3>
             </div>
             <div className="cart-pop-btns">
                 <NavLink style={{textDecoration: "none"}} to="/cart"><Button onClick={() => setCartPopupActive(false)} black={true}>View Cart</Button></NavLink>

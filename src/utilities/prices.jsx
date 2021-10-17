@@ -1,3 +1,3 @@
 export const fixPrice = price => {
-    return Number(price).toFixed(2);
+    return Number(Number(price).toFixed(2));
 }

@@ -31,7 +31,7 @@ export default function Competition(props) {
     const [tickets, setTickets] = useState(1);
 
     const { cart, setCart } = useContext(CartContext)
-    const { setCartPopupActive } = useContext(CartPopupContext);
+    const { setCartPopupActive, setLatestProduct } = useContext(CartPopupContext);
 
     const iw = useRef({});
     const m_iw = useRef({});
@@ -45,13 +45,14 @@ export default function Competition(props) {
 
     const addToCart = () => {
         const existing = cart.products.find(prod => prod.compId === compid && prod.answer === answer);
-        setCartPopupActive(true);
-        
+        var index = -1;
         if (existing) {
             const products = [...cart.products];
-            products[products.indexOf(existing)].quantity += tickets;
+            index = products.indexOf(existing);
+            products[index].quantity += tickets;
             setCart({ products: products });
-        } else
+        } else {
+            index = cart.products.length;
             setCart({
                 products: [...cart.products, {
                     compId: compid,
@@ -60,6 +61,10 @@ export default function Competition(props) {
                     compData: data[0]
                 }]
             })
+        }
+        console.log("AAAAA", index);
+        setLatestProduct(index);
+        setCartPopupActive(true);
     }
 
 

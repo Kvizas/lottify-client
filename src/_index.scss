@@ -190,6 +190,13 @@ html {
     color: $red-color
 }
 
+.bold { 
+    font-weight: bold;
+}
+.black { 
+    color: black;
+}
+
 @media(max-width: 1100px) {
     h1 {
         font-size: 2rem;

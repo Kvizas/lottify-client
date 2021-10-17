@@ -35,7 +35,7 @@ export default function ImageViewer(props) {
                     <img alt="" src={Close} className="iw-close" onClick={close}></img>
                 </div>
                 <div className="iw-image-wrapper">
-                    <img alt="" className="iw-image" src={API_URL + open}></img>
+                    <img alt="" className="iw-image" src={open ? API_URL + open : ""}></img>
                 </div>
                 <div className="iw-controller">
                     <img alt="" src={Arrow} className="iw-arrow" onClick={() => openImage(openedId - 1)}></img>

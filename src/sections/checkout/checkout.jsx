@@ -52,9 +52,10 @@ export default function Checkout({ props }) {
 
     useEffect(() => {
         if (!data) return;
-        setTotal(fixPrice(cart.products.map(prod =>
+        const calc = fixPrice(cart.products.map(prod =>
             fixPrice(prod.quantity * data.find(comps => comps.id === parseInt(prod.compId)).Price))
-            .reduce((a, b) => a + b, 0)))
+            .reduce((a, b) => a + b, 0));
+        setTotal(calc);
     }, [cart, data])
 
     const getSubtotal = () => {
@@ -75,7 +76,6 @@ export default function Checkout({ props }) {
             discountCode
         }).then(resp => {
             if (resp.statusCode === 200) {
-                console.log(resp)
                 setJwt(resp.token)
                 setAddressSubmitted(true)
             }

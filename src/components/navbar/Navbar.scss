@@ -120,7 +120,9 @@ $primaryColor: #E05955;
     width: 65%;
 }
 
+
 @media(max-width: 1100px) {
+
     .nav-burger-stack {
         width: 30px;
         height: 2px;
@@ -144,6 +146,7 @@ $primaryColor: #E05955;
     .nav-icon {
         margin: 0 14px 0 0;
     }
+
 }
 
 @media(min-width: 1100px) {

@@ -20,6 +20,7 @@ import { API_URL } from '../../settings';
 import CartIcon from '../cart-icon/cart-icon';
 import CartPopup from '../cart-popup/cart-popup';
 import { CartPopupContext } from '../../contexts/cart-popup-context-provider';
+import CartPopupMobile from '../cart-popup-mobile/cart-popup-mobile';
 
 export default function Navbar() {
 
@@ -149,8 +150,8 @@ export default function Navbar() {
                     </div>
                 </div>
             </div>
+            <CartPopupMobile/>
         </div>
-
 
     )
 }
