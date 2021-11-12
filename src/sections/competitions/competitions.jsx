@@ -24,13 +24,22 @@ export default function Competitions(props) {
 
     const limit = props.limit;
 
+
+    const sortByDeadline = (comps) => {
+        return comps.sort((comp1, comp2) => new Date(comp2.Deadline.Deadline).getTime() - new Date(comp1.Deadline.Deadline).getTime())
+    }
+
+
     useEffect(() => {
         getData(API_URL + "/competitions/count").then(d => setMaxPages(d / compsPerPage))
     }, [])
 
     useEffect(() => {
-        getData(API_URL + "/competitions" + (limit !== undefined ? `?_limit=${limit}` : `?_start=${currentPage * compsPerPage}&_limit=${compsPerPage}`) + "&_sort=deadline:ASC,created_at:DESC")
-            .then(d => { setData(d); setLoading(false); })
+        getData(API_URL + "/competitions" + (limit !== undefined ? `?_limit=${limit}` : `?_start=${currentPage * compsPerPage}&_limit=${compsPerPage}`))
+            .then(d => { 
+                setData(sortByDeadline(d));
+                setLoading(false); 
+        })
             .catch(() => { setError(true); setLoading(false); });
     }, [currentPage, limit])
 
