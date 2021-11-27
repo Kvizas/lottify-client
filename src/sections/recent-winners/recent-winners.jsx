@@ -34,11 +34,12 @@ export default function RecentWinners() {
                         data.length >= 1 ?
                             <Carousel callNextSlideRef={callNextSlideRef} slides={
                                 data.map(obj => {
+                                    console.log(obj)
                                     return {
-                                        img: (obj.Competition && obj.Competition.Images[0].url) || "",
-                                        title: <h4 style={{ margin: "20px 0" }} className="w-100 text-center rw-title"><span className="red">WON: </span>{(obj.Competition && obj.Competition.Title) || "Competition not found"}</h4>,
-                                        content: <Winner {...obj} onControl={callNextSlide}></Winner>
-                                    }
+                                    img: (obj.Competition && obj.Competition.Images[0].url) || "",
+                                    title: <h4 style={{ margin: "20px 0" }} className="w-100 text-center rw-title"><span className="red">WON: </span>{(obj.Competition && obj.Competition.Title) || "Competition not found"}</h4>,
+                                    content: <Winner {...obj} onControl={callNextSlide}></Winner>
+                                }
                                 }).filter(e => e !== undefined)
                             } />
                             :

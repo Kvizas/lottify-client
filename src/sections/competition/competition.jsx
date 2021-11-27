@@ -21,6 +21,7 @@ import NumberSpinner from '../../components/number-spinner/number-spinner';
 import { fixPrice } from '../../utilities/prices';
 import ImageViewer from '../../components/image-viewer/image-viewer';
 import { CartPopupContext } from '../../contexts/cart-popup-context-provider';
+import { Link } from 'react-router-dom';
 
 export default function Competition(props) {
 
@@ -62,7 +63,6 @@ export default function Competition(props) {
                 }]
             })
         }
-        console.log("AAAAA", index);
         setLatestProduct(index);
         setCartPopupActive(true);
     }
@@ -138,6 +138,7 @@ export default function Competition(props) {
                                             </div>
                                         </div>}
                             <br />
+                            <p><Link style={{color: "#E05955"}} to="/terms">Check our T&C</Link> for the free entry route</p>
                             <FAQBox title="Prize details">{compData.Details}</FAQBox>
                             {faqData.faqs.map((faq, i) => <FAQBox key={i} title={faq.Question}>{faq.Answer}</FAQBox>)}
                         </div>
