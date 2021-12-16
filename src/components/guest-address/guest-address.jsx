@@ -20,6 +20,7 @@ export default function GuestAddress({ onSuccess }) {
     const [error, setError] = useState()
 
     const change = () => {
+
         onSuccess();
 
         if (!email.current ||

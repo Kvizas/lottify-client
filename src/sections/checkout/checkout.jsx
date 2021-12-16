@@ -67,7 +67,9 @@ export default function Checkout({ props }) {
         return <><s>£{total}</s> £{discounted}</>;
     }
 
+
     const submitAddress = () => {
+
         setLoadingPayment(true);
         postData(API_URL + '/lottify/checkout', {
             cart,
