@@ -10,7 +10,7 @@ export const checkEmail = email => {
 }
 
 export const checkPassword = pass => {
-    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&£\-\\/{}[]()]{8,64}$/.test(pass)) return "Password must contain minimum eight characters (maximum 64), at each uppercase and lowercase letter and one number. Otherwise symbols used are unallowed.";
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&£\-\\\/\{\}\[\]\(\)]{8,64}$/.test(pass)) return "Password must contain minimum eight characters (maximum 64), at each uppercase and lowercase letter and one number. Otherwise symbols used are unallowed.";
     return true;
 }
 
