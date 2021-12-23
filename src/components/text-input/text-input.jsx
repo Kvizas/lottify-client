@@ -4,17 +4,19 @@ import "./text-input.scss";
 
 export default function TextInput(props) {
 
-    const [ev, setEv] = useState({v: props.default || ""})
+    const [ev, setEv] = useState({v: props.default })
 
     const change = c => {
-        if (props.value) setEv({v: c.target.value, c: c});
+        setEv({v: c.target.value, c: c});
     }
 
     useEffect(() => {
         try {
-            props.value.current = ev.v;
+            if (props.value) props.value.current = ev.v;
             if (props.onChange) props.onChange(ev.c.target.value, ev.c);
-        } catch {}
+        } catch (ex) {
+            console.log(ex)
+        }
     }, [props.value, ev])
 
     return (
